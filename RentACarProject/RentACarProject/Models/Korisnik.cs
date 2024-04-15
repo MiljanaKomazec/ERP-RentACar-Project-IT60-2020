@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace RentACarProject.Models
@@ -47,10 +48,15 @@ namespace RentACarProject.Models
         [Unicode(false)]
         public string UserNameK { get; set; } = null!;
         [Column("passwordK")]
-        [StringLength(20)]
+        [StringLength(1000)]
         [Unicode(false)]
         public string PasswordK { get; set; } = null!;
+        [Column("saltK")]
+        [StringLength(1000)]
+        [Unicode(false)]
+        public string SaltK { get; set; } = null!;
 
+        [JsonIgnore]
         [InverseProperty(nameof(Rentiranje.Korisnik))]
         public virtual ICollection<Rentiranje> Rentiranjes { get; set; }
     }

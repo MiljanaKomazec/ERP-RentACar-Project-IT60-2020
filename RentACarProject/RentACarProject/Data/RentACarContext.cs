@@ -51,19 +51,19 @@ namespace RentACarProject.Data
                 entity.HasOne(d => d.Automobil)
                     .WithMany(p => p.Rentiranjes)
                     .HasForeignKey(d => d.AutomobilId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.ClientCascade)
                     .HasConstraintName("FK_Rentiranje_Automobil");
 
                 entity.HasOne(d => d.Korisnik)
                     .WithMany(p => p.Rentiranjes)
                     .HasForeignKey(d => d.KorisnikId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.ClientCascade)
                     .HasConstraintName("FK_Rentiranje_Korisnik");
 
                 entity.HasOne(d => d.Zaposleni)
                     .WithMany(p => p.Rentiranjes)
                     .HasForeignKey(d => d.ZaposleniId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.ClientCascade)
                     .HasConstraintName("FK_Rentiranje_Zaposleni");
             });
 

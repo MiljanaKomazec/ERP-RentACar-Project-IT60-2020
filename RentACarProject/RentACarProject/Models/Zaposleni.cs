@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace RentACarProject.Models
@@ -56,7 +57,7 @@ namespace RentACarProject.Models
         [Unicode(false)]
         public string SaltZ { get; set; } = null!;
 
-
+        [JsonIgnore]
         [InverseProperty(nameof(Rentiranje.Zaposleni))]
         public virtual ICollection<Rentiranje> Rentiranjes { get; set; }
     }

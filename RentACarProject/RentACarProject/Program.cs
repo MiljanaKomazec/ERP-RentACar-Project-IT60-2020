@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RentACarProject.Data;
 using RentACarProject.Repository.AutomobilRepository;
+using RentACarProject.Repository.KorisnikRepository;
+using RentACarProject.Repository.RentiranjeRepository;
 using RentACarProject.Repository.ZaposleniRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,8 @@ builder.Services.AddDbContext<RentACarContext>(options =>
 
 builder.Services.AddScoped<IAutomobilRepository, AutomobilRepository>();
 builder.Services.AddScoped<IZaposleniRepository, ZaposleniRepository>();
+builder.Services.AddScoped<IKorisnikRepository, KorisnikRepository>();
+builder.Services.AddScoped<IRentiranjeRepository, RentiranjeRepository>();
 
 var app = builder.Build();
 

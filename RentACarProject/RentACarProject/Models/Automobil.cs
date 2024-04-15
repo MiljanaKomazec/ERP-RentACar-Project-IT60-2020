@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace RentACarProject.Models
@@ -46,6 +47,7 @@ namespace RentACarProject.Models
         [Column("cenaPoDanu", TypeName = "numeric(10, 0)")]
         public decimal CenaPoDanu { get; set; }
 
+        [JsonIgnore]
         [InverseProperty(nameof(Rentiranje.Automobil))]
         public virtual ICollection<Rentiranje> Rentiranjes { get; set; }
     }
