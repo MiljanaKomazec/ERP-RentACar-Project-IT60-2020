@@ -1,7 +1,10 @@
-﻿using RentACarProject.Models;
+﻿
+
+using RentACarProject.Models;
 
 namespace RentACarProject.Repository.KorisnikRepository
 {
+    
     public interface IKorisnikRepository
     {
         List<Korisnik> GetKorisnik();

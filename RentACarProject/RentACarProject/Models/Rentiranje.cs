@@ -40,10 +40,10 @@ namespace RentACarProject.Models
         [InverseProperty("Rentiranjes")]
         public virtual Automobil Automobil { get; set; } = null!;
         [ForeignKey(nameof(KorisnikId))]
-        [InverseProperty("Rentiranjes")]
+        [InverseProperty("RentiranjeKorisniks")]
         public virtual Korisnik Korisnik { get; set; } = null!;
         [ForeignKey(nameof(ZaposleniId))]
-        [InverseProperty("Rentiranjes")]
-        public virtual Zaposleni Zaposleni { get; set; } = null!;
+        [InverseProperty("RentiranjeZaposlenis")]
+        public virtual Korisnik Zaposleni { get; set; } = null!;
     }
 }

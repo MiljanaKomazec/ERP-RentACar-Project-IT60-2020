@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using RentACarProject.Data;
 using RentACarProject.Models;
 
+
 namespace RentACarProject.Repository.RentiranjeRepository
 {
+    
     public class RentiranjeRepository : IRentiranjeRepository
     {
         private readonly RentACarContext context;
@@ -84,7 +86,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
                     existingRentiranje.Zaposleni = rentiranje.Zaposleni;
                     existingRentiranje.AutomobilId = rentiranje.AutomobilId;
                     existingRentiranje.Automobil = rentiranje.Automobil; */
-
+    
                     _ = context.Entry(existingRentiranje).State;
 
                     int affectedRows = await context.SaveChangesAsync(); // Check return value
@@ -118,6 +120,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
             await context.SaveChangesAsync();
         }
         */
+    
         public async Task DeleteRentiranje(Guid RentiranjeId)
         {
             var rentiranje = await GetRentiranjeById(RentiranjeId);
@@ -139,5 +142,6 @@ namespace RentACarProject.Repository.RentiranjeRepository
             }
             return rentiranja;
         }
+    
     }
 }

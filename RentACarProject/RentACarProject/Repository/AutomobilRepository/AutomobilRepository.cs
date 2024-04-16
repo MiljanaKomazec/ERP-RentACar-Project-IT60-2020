@@ -4,8 +4,9 @@ using RentACarProject.Data;
 using RentACarProject.Models;
 
 
+
 namespace RentACarProject.Repository.AutomobilRepository
-{
+{ 
     public class AutomobilRepository : IAutomobilRepository
     {
         private readonly RentACarContext context;

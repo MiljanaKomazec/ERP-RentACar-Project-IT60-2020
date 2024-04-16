@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RentACarProject.DTO;
@@ -9,6 +10,7 @@ using RentACarProject.Repository.RentiranjeRepository;
 
 namespace RentACarProject.Controllers
 {
+    
     [ApiController]
     [Route("api/rentiranje")]
     [Produces("application/json", "application/xml")]
@@ -25,6 +27,7 @@ namespace RentACarProject.Controllers
             this.mapper = mapper;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -40,7 +43,7 @@ namespace RentACarProject.Controllers
             return Ok(mapper.Map<List<Rentiranje>>(rentiranje));
         }
 
-
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("{RentiranjeId}")]
@@ -57,6 +60,7 @@ namespace RentACarProject.Controllers
             return Ok(mapper.Map<RentiranjeDTO>(rentiranje));
         }
 
+        [Authorize(Roles = "Admin, Korisnik")]
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -85,7 +89,7 @@ namespace RentACarProject.Controllers
 
         }
 
-
+        [Authorize(Roles = "Admin, Korisnik")]
         [HttpPut("{RentiranjeId}")]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -144,6 +148,7 @@ namespace RentACarProject.Controllers
         }
         */
 
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -171,6 +176,7 @@ namespace RentACarProject.Controllers
             }
         }
 
+        [Authorize(Roles = "Korisnik, Zaposleni")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("korisnik/{KorisnikId}")]

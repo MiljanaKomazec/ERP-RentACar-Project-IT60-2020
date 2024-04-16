@@ -1,14 +1,16 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RentACarProject.DTO;
 using RentACarProject.Models;
 using RentACarProject.Repository.KorisnikRepository;
-using RentACarProject.Repository.ZaposleniRepository;
+
 
 
 namespace RentACarProject.Controllers
 {
+    
     [ApiController]
     [Route("api/korisnik")]
     [Produces("application/json", "application/xml")]
@@ -25,6 +27,7 @@ namespace RentACarProject.Controllers
             this.mapper = mapper;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -41,6 +44,7 @@ namespace RentACarProject.Controllers
             return Ok(mapper.Map<List<KorisnikDTO>>(korisnici));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{KorisnikId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -70,6 +74,8 @@ namespace RentACarProject.Controllers
                     return BadRequest(ModelState);
                 }
 
+
+
                 Korisnik mappedKorisnik = mapper.Map<Korisnik>(korisnik);
                 Korisnik createdKorisnik = korisnikRepository.CreateKorisnik(mappedKorisnik);
                 korisnikRepository.SaveChanges();
@@ -85,6 +91,7 @@ namespace RentACarProject.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{KorisnikId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -110,6 +117,7 @@ namespace RentACarProject.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin, Zaposleni, Korisnik")]
         [HttpPut("{KorisnikId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

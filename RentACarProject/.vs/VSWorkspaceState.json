@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\RentACarProject",
-    "\\RentACarProject\\Controllers",
-    "\\RentACarProject\\Repository",
-    "\\RentACarProject\\Repository\\RentiranjeRepository"
+    "\\RentACarProject"
   ],
   "SelectedNode": "\\RentACarProject.sln",
   "PreviewInSolutionExplorer": false

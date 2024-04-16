@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RentACarProject.DTO;
@@ -8,6 +9,7 @@ using RentACarProject.Repository.AutomobilRepository;
 
 namespace RentACarProject.Controllers
 {
+    
     [ApiController]
     [Route("api/automobil")]
     [Produces("application/json", "application/xml")]
@@ -56,6 +58,7 @@ namespace RentACarProject.Controllers
             return Ok(mapper.Map<AutomobilDTO>(auto));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -84,6 +87,7 @@ namespace RentACarProject.Controllers
 
         }
 
+        [Authorize(Roles = "Admin, Zaposleni")]
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -113,7 +117,7 @@ namespace RentACarProject.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -184,7 +188,9 @@ namespace RentACarProject.Controllers
 
             return Ok(mapper.Map<List<AutomobilDTO>>(auto));
         }
+   
 
 
     }
+
 }

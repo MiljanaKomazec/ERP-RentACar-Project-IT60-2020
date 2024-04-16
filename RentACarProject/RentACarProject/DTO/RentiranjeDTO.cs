@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RentACarProject.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using RentACarProject.Models;
 
 namespace RentACarProject.DTO
 {
     public class RentiranjeDTO
     {
+        
         public decimal BrojDanaIzdavanja { get; set; }
         public DateTime DatumPocetkaIzdavanja { get; set; }
         public DateTime DatumKrajaIzdavanja { get; set; }
@@ -17,8 +18,8 @@ namespace RentACarProject.DTO
         public Guid KorisnikId { get; set; }
         public virtual Korisnik Korisnik { get; set; } = null!;
         public Guid ZaposleniId { get; set; }
-        public virtual Zaposleni Zaposleni { get; set; } = null!;
+        public virtual Korisnik Zaposleni { get; set; } = null!;
         public Guid AutomobilId { get; set; }
-        public virtual Automobil Automobil { get; set; } = null!;
+        public virtual Automobil Automobil { get; set; } = null!; 
     }
 }

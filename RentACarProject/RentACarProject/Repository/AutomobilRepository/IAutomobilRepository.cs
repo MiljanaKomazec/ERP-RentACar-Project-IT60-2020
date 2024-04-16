@@ -3,7 +3,7 @@
 using RentACarProject.Models;
 
 namespace RentACarProject.Repository.AutomobilRepository
-{
+{ 
     public interface IAutomobilRepository
     {
         List<Automobil> GetAutomobil();
@@ -17,5 +17,5 @@ namespace RentACarProject.Repository.AutomobilRepository
         List<Automobil> GetAutomobilByMarka(string MarkaA);
 
         bool SaveChanges();
-    }
+    } 
 }

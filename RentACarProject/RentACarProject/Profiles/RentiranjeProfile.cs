@@ -2,10 +2,12 @@
 using RentACarProject.DTO;
 using RentACarProject.Models;
 
+
 namespace RentACarProject.Profiles
 {
     public class RentiranjeProfile : Profile
     {
+        
         public RentiranjeProfile()
         {
             CreateMap<Rentiranje, RentiranjeDTO>()
@@ -44,17 +46,18 @@ namespace RentACarProject.Profiles
                .ForMember(dest => dest.PlacenoR, opt => opt.MapFrom(src => src.PlacenoR))
                .ForMember(dest => dest.DatumPlacanja, opt => opt.MapFrom(src => src.DatumPlacanja))
                .ForMember(dest => dest.PristupniKod, opt => opt.MapFrom(src => src.PristupniKod))
+               
                /*
                .ForMember(dest => dest.KorisnikId, opt => opt.MapFrom(src => src.KorisnikId))
                .ForMember(dest => dest.Korisnik, opt => opt.MapFrom(src => src.Korisnik))
                .ForMember(dest => dest.ZaposleniId, opt => opt.MapFrom(src => src.ZaposleniId))
                .ForMember(dest => dest.Zaposleni, opt => opt.MapFrom(src => src.Zaposleni))
                .ForMember(dest => dest.AutomobilId, opt => opt.MapFrom(src => src.AutomobilId))
-               .ForMember(dest => dest.Automobil, opt => opt.MapFrom(src => src.Automobil))
-               */
+               .ForMember(dest => dest.Automobil, opt => opt.MapFrom(src => src.Automobil)) */
+              
                .ReverseMap();
-            CreateMap<Rentiranje, Rentiranje>();
+            CreateMap<Rentiranje, Rentiranje>(); 
 
-        }
+        } 
     }
 }

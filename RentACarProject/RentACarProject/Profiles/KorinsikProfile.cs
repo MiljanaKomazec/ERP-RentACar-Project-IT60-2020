@@ -2,10 +2,11 @@
 using RentACarProject.DTO;
 using RentACarProject.Models;
 
+
 namespace RentACarProject.Profiles
 {
     public class KorinsikProfile : Profile
-    {
+    { 
         public KorinsikProfile() {
             CreateMap<Korisnik, KorisnikDTO>()
                 .ForMember(dest => dest.KorisnikId, opt => opt.MapFrom(src => src.KorisnikId))
@@ -15,6 +16,7 @@ namespace RentACarProject.Profiles
                 .ForMember(dest => dest.GradK, opt => opt.MapFrom(src => src.GradK))
                 .ForMember(dest => dest.AdresaK, opt => opt.MapFrom(src => src.AdresaK))
                 .ForMember(dest => dest.KontaktK, opt => opt.MapFrom(src => src.KontaktK))
+                .ForMember(dest => dest.Uloga, opt => opt.MapFrom(src => src.Uloga))
                 .ForMember(dest => dest.UserNameK, opt => opt.MapFrom(src => src.UserNameK))
                 .ReverseMap();
             CreateMap<Korisnik, KorisnikCreateDTO>()
@@ -24,6 +26,7 @@ namespace RentACarProject.Profiles
                 .ForMember(dest => dest.GradK, opt => opt.MapFrom(src => src.GradK))
                 .ForMember(dest => dest.AdresaK, opt => opt.MapFrom(src => src.AdresaK))
                 .ForMember(dest => dest.KontaktK, opt => opt.MapFrom(src => src.KontaktK))
+                .ForMember(dest => dest.Uloga, opt => opt.MapFrom(src => src.Uloga))
                 .ForMember(dest => dest.UserNameK, opt => opt.MapFrom(src => src.UserNameK))
                 .ForMember(dest => dest.PasswordK, opt => opt.MapFrom(src => src.PasswordK))
                 .ReverseMap();
@@ -35,6 +38,7 @@ namespace RentACarProject.Profiles
                 .ForMember(dest => dest.GradK, opt => opt.MapFrom(src => src.GradK))
                 .ForMember(dest => dest.AdresaK, opt => opt.MapFrom(src => src.AdresaK))
                 .ForMember(dest => dest.KontaktK, opt => opt.MapFrom(src => src.KontaktK))
+                .ForMember(dest => dest.Uloga, opt => opt.MapFrom(src => src.Uloga))
                 .ForMember(dest => dest.UserNameK, opt => opt.MapFrom(src => src.UserNameK))
                .ForMember(dest => dest.PasswordK, opt => opt.MapFrom(src => src.PasswordK))
                .ReverseMap();
@@ -42,6 +46,6 @@ namespace RentACarProject.Profiles
 
 
 
-        }
+        } 
     }
 }

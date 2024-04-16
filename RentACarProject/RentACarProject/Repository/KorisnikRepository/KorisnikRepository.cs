@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 
 namespace RentACarProject.Repository.KorisnikRepository
 {
+   
     public class KorisnikRepository : IKorisnikRepository
     {
         private readonly RentACarContext context;
@@ -38,7 +39,7 @@ namespace RentACarProject.Repository.KorisnikRepository
         public Korisnik CreateKorisnik(Korisnik korisnik)
         {
             var password = HashPassword(korisnik.PasswordK);
-            korisnik.KorisnikId = new Guid();
+            korisnik.KorisnikId = Guid.NewGuid();
             korisnik.PasswordK = password.Item1;
             korisnik.SaltK = password.Item2;
             var createdEntity = context.Add(korisnik);
@@ -68,6 +69,7 @@ namespace RentACarProject.Repository.KorisnikRepository
                     existingKorisnik.GradK = korisnik.GradK;
                     existingKorisnik.AdresaK = korisnik.AdresaK;
                     existingKorisnik.KontaktK = korisnik.KontaktK;
+                    existingKorisnik.Uloga = korisnik.Uloga;
                     existingKorisnik.UserNameK = korisnik.UserNameK;
 
                     context.SaveChanges();

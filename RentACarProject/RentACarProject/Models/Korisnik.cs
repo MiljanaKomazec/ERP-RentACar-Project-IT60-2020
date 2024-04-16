@@ -13,7 +13,8 @@ namespace RentACarProject.Models
     {
         public Korisnik()
         {
-            Rentiranjes = new HashSet<Rentiranje>();
+            RentiranjeKorisniks = new HashSet<Rentiranje>();
+            RentiranjeZaposlenis = new HashSet<Rentiranje>();
         }
 
         [Key]
@@ -43,6 +44,10 @@ namespace RentACarProject.Models
         [StringLength(30)]
         [Unicode(false)]
         public string KontaktK { get; set; } = null!;
+        [Column("uloga")]
+        [StringLength(15)]
+        [Unicode(false)]
+        public string Uloga { get; set; } = null!;
         [Column("userNameK")]
         [StringLength(20)]
         [Unicode(false)]
@@ -55,9 +60,11 @@ namespace RentACarProject.Models
         [StringLength(1000)]
         [Unicode(false)]
         public string SaltK { get; set; } = null!;
-
         [JsonIgnore]
         [InverseProperty(nameof(Rentiranje.Korisnik))]
-        public virtual ICollection<Rentiranje> Rentiranjes { get; set; }
+        public virtual ICollection<Rentiranje> RentiranjeKorisniks { get; set; }
+        [JsonIgnore]
+        [InverseProperty(nameof(Rentiranje.Zaposleni))]
+        public virtual ICollection<Rentiranje> RentiranjeZaposlenis { get; set; }
     }
 }

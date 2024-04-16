@@ -13,7 +13,7 @@ namespace RentACarProject.Data
         {
         }
 
-        public RentACarContext(DbContextOptions<RentACarContext> options, IConfiguration configuration)
+        public RentACarContext(DbContextOptions<RentACarContext> options)
             : base(options)
         {
             this.configuration = configuration;
@@ -22,7 +22,6 @@ namespace RentACarProject.Data
         public virtual DbSet<Automobil> Automobils { get; set; } = null!;
         public virtual DbSet<Korisnik> Korisniks { get; set; } = null!;
         public virtual DbSet<Rentiranje> Rentiranjes { get; set; } = null!;
-        public virtual DbSet<Zaposleni> Zaposlenis { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -55,21 +54,16 @@ namespace RentACarProject.Data
                     .HasConstraintName("FK_Rentiranje_Automobil");
 
                 entity.HasOne(d => d.Korisnik)
-                    .WithMany(p => p.Rentiranjes)
+                    .WithMany(p => p.RentiranjeKorisniks)
                     .HasForeignKey(d => d.KorisnikId)
                     .OnDelete(DeleteBehavior.ClientCascade)
                     .HasConstraintName("FK_Rentiranje_Korisnik");
 
                 entity.HasOne(d => d.Zaposleni)
-                    .WithMany(p => p.Rentiranjes)
+                    .WithMany(p => p.RentiranjeZaposlenis)
                     .HasForeignKey(d => d.ZaposleniId)
                     .OnDelete(DeleteBehavior.ClientCascade)
                     .HasConstraintName("FK_Rentiranje_Zaposleni");
-            });
-
-            modelBuilder.Entity<Zaposleni>(entity =>
-            {
-                entity.Property(e => e.ZaposleniId).ValueGeneratedNever();
             });
 
             OnModelCreatingPartial(modelBuilder);

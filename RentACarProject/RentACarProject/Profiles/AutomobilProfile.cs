@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using RentACarProject.DTO;
 using RentACarProject.Models;
 
+
 namespace RentACarProject.Profiles
 {
     public class AutomobilProfile : Profile
-    {
+    { 
         public AutomobilProfile() {
             CreateMap<Automobil, AutomobilDTO>()
                 .ForMember(dest => dest.BrojSasije, opt => opt.MapFrom(src => src.BrojSasije))
@@ -21,5 +22,6 @@ namespace RentACarProject.Profiles
                 .ReverseMap();
             CreateMap<Automobil, Automobil>();
         }
+        
     }
 }
