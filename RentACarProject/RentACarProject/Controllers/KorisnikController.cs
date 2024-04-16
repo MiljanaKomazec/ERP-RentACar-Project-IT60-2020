@@ -33,9 +33,9 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]
-        public ActionResult<List<KorisnikDTO>> GetKorisnik()
+        public ActionResult<List<KorisnikDTO>> GetKorisnik(int page = 1, int pageSize = 5)
         {
-            List<Korisnik> korisnici = korisnikRepository.GetKorisnik();
+            List<Korisnik> korisnici = korisnikRepository.GetKorisnik(page, pageSize);
             if (korisnici == null || korisnici.Count == 0)
             {
                 return NoContent();

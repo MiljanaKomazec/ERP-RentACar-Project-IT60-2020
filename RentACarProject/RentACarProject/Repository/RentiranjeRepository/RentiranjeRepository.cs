@@ -22,18 +22,42 @@ namespace RentACarProject.Repository.RentiranjeRepository
         {
             return await context.SaveChangesAsync() > 0;
         }
-        public async Task<List<Rentiranje>> GetRentiranje()
+        public async Task<List<Rentiranje>> GetRentiranje(int page, int pageSize)
         {
-            var rentiranja = await context.Rentiranjes.Include(k => k.Korisnik)
+            try
+            {
+                var rentiranja = await context.Rentiranjes.Include(k => k.Korisnik)
                                                                         .Include(z => z.Zaposleni)
                                                                         .Include(a => a.Automobil)
                                                                         .ToListAsync();
-
-            foreach (Rentiranje rentiranje in rentiranja)
-            {
-                Console.WriteLine(rentiranje);
+                var totalCount = rentiranja.Count;
+                var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
+                var obj = await context.Rentiranjes
+                    .Include(k => k.Korisnik)
+                    .Include(z => z.Zaposleni)
+                    .Include(a => a.Automobil)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+                if (obj != null)
+                {
+                    foreach (Rentiranje rentiranje in obj)
+                    {
+                        Console.WriteLine(rentiranje);
+                    }
+                    return obj;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            return rentiranja;
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
         }
 
         public async Task<Rentiranje> GetRentiranjeById(Guid RentiranjeId)
@@ -142,6 +166,20 @@ namespace RentACarProject.Repository.RentiranjeRepository
             }
             return rentiranja;
         }
-    
+
+        public async Task<List<Rentiranje>> GetRentiranjeByAutomobilId(Guid AutomobilId)
+        {
+            var rentiranja = await context.Rentiranjes.Include(k => k.Korisnik)
+                                                                        .Include(z => z.Zaposleni)
+                                                                        .Include(a => a.Automobil)
+                                                                        .Where(k => k.AutomobilId == AutomobilId)
+                                                                        .ToListAsync();
+
+            foreach (Rentiranje rentiranje in rentiranja)
+            {
+                Console.WriteLine(rentiranje);
+            }
+            return rentiranja;
+        }
     }
 }

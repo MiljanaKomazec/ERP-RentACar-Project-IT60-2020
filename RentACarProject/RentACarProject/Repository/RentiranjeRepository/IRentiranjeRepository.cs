@@ -6,7 +6,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
 {
     public interface IRentiranjeRepository
     {
-        Task<List<Rentiranje>> GetRentiranje();
+        Task<List<Rentiranje>> GetRentiranje(int page, int pageSize);
         Task<Rentiranje> GetRentiranjeById(Guid RentiranjeId);
         Task<Rentiranje> CreateRentiranje(Rentiranje rentiranje);
         Task<Rentiranje> UpdateRentiranje(Rentiranje rentiranje);
@@ -14,6 +14,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
         Task DeleteRentiranje(Guid RentiranjeId);
 
         Task<List<Rentiranje>> GetRentiranjeByKorisnikId(Guid KorisnikId);
+        Task<List<Rentiranje>> GetRentiranjeByAutomobilId(Guid AutomobilId);
         Task<bool> SaveChanges();
     }
 }

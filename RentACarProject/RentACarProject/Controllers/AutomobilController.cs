@@ -32,9 +32,9 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]
-        public ActionResult<List<Automobil>> GetAutomobil()
+        public ActionResult<List<Automobil>> GetAutomobil(int page = 1, int pageSize = 5)
         {
-            List<Automobil> auto = autoRepository.GetAutomobil();
+            List<Automobil> auto = autoRepository.GetAutomobil(page,pageSize);
             if (auto == null || auto.Count == 0)
             {
                 return NoContent();

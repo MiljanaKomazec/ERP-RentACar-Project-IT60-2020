@@ -33,9 +33,9 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]
-        public async Task<ActionResult<List<Rentiranje>>> GetRentiranje()
+        public async Task<ActionResult<List<Rentiranje>>> GetRentiranje(int page = 1, int pageSize = 5)
         {
-            var rentiranje = await rentRepository.GetRentiranje();
+            var rentiranje = await rentRepository.GetRentiranje(page, pageSize);
             if (rentiranje == null || rentiranje.Count == 0)
             {
                 return NoContent();
@@ -184,6 +184,24 @@ namespace RentACarProject.Controllers
         public async Task<ActionResult<List<RentiranjeDTO>>> GetRentiranjeByKorisnikId(Guid KorisnikId)
         {
             var rentiranje = await rentRepository.GetRentiranjeByKorisnikId(KorisnikId);
+
+            if (rentiranje == null || rentiranje.Count == 0)
+            {
+                return NoContent();
+            }
+
+
+            return Ok(mapper.Map<List<RentiranjeDTO>>(rentiranje));
+        }
+
+        [Authorize(Roles = "Admin")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet("automobil/{AutomobilId}")]
+        [EnableCors("AllowOrigin")]
+        public async Task<ActionResult<List<RentiranjeDTO>>> GetRentiranjeByAutomobilId(Guid AutomobilId)
+        {
+            var rentiranje = await rentRepository.GetRentiranjeByAutomobilId(AutomobilId);
 
             if (rentiranje == null || rentiranje.Count == 0)
             {

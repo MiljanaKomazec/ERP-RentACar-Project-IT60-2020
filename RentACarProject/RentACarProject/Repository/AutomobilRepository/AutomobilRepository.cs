@@ -23,11 +23,17 @@ namespace RentACarProject.Repository.AutomobilRepository
             return context.SaveChanges() > 0;
         }
 
-        public List<Automobil> GetAutomobil()
+        public List<Automobil> GetAutomobil(int page, int pageSize)
         {
             try
             {
-                var obj = context.Automobils.ToList();
+                var automobili = context.Automobils.ToList();
+                var totalCount =automobili.Count;
+                var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
+                var obj = context.Automobils
+                    .Skip((page-1)*pageSize)
+                    .Take(pageSize)
+                    .ToList();
                 if (obj != null)
                 {
                     return obj;

@@ -6,7 +6,7 @@ namespace RentACarProject.Repository.AutomobilRepository
 { 
     public interface IAutomobilRepository
     {
-        List<Automobil> GetAutomobil();
+        List<Automobil> GetAutomobil(int page, int pageSize);
         Automobil GetAutomobilById(Guid AutomobilId);
         Automobil CreateAutomobil(Automobil automobil);
         void UpdateAutomobil(Automobil automobil);

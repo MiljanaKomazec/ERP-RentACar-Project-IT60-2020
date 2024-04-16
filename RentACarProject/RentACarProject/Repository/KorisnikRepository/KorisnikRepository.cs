@@ -22,9 +22,31 @@ namespace RentACarProject.Repository.KorisnikRepository
         {
             return context.SaveChanges() > 0;
         }
-        public List<Korisnik> GetKorisnik()
+        public List<Korisnik> GetKorisnik(int page, int pageSize)
         {
-            return context.Korisniks.ToList();
+            try
+            {
+                var korisnici = context.Korisniks.ToList();
+                var totalCount = korisnici.Count;
+                var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
+                var obj = context.Korisniks
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+                if (obj != null)
+                {
+                    return obj;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public Korisnik GetKorisnikById(Guid KorisnikId)

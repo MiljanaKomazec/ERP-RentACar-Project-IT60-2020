@@ -7,7 +7,7 @@ namespace RentACarProject.Repository.KorisnikRepository
     
     public interface IKorisnikRepository
     {
-        List<Korisnik> GetKorisnik();
+        List<Korisnik> GetKorisnik(int page, int pageSize);
         Korisnik GetKorisnikById(Guid KorisnikId);
         Korisnik GetKorisnikByUserName(string userName);
         Korisnik CreateKorisnik(Korisnik korisnik);
