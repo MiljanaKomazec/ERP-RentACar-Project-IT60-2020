@@ -28,6 +28,7 @@ namespace RentACarProject.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -43,6 +44,7 @@ namespace RentACarProject.Controllers
             return Ok(mapper.Map<List<Automobil>>(auto));
         }
 
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("{AutomobilId}")]
@@ -145,6 +147,7 @@ namespace RentACarProject.Controllers
         }
 
         [HttpGet("tipMenjaca/{TipM}")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]
@@ -160,6 +163,7 @@ namespace RentACarProject.Controllers
         }
 
         [HttpGet("tipAutomobila/{TipA}")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]
@@ -175,6 +179,7 @@ namespace RentACarProject.Controllers
         }
 
         [HttpGet("markaAutomobila/{MarkaA}")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]

@@ -57,6 +57,7 @@ namespace RentACarProject.Repository.AutomobilRepository
 
         public Automobil CreateAutomobil(Automobil automobil)
         {
+            automobil.AutomobilId = Guid.NewGuid();
             var createdEntity = context.Add(automobil);
             return mapper.Map<Automobil>(createdEntity.Entity);
         }

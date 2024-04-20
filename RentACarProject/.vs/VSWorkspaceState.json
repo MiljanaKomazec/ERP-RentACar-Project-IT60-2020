@@ -2,9 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\RentACarProject",
-    "\\RentACarProject\\Controllers",
-    "\\RentACarProject\\Repository",
-    "\\RentACarProject\\Repository\\AutomobilRepository"
+    "\\RentACarProject\\Helpers"
   ],
   "SelectedNode": "\\RentACarProject.sln",
   "PreviewInSolutionExplorer": false

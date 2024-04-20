@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RentACarProject.Data;
@@ -50,6 +51,7 @@ builder.Services.AddScoped<IAutomobilRepository, AutomobilRepository>();
 builder.Services.AddScoped<IKorisnikRepository, KorisnikRepository>();
 builder.Services.AddScoped<IRentiranjeRepository, RentiranjeRepository>();
 builder.Services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+
 
 var app = builder.Build();
 

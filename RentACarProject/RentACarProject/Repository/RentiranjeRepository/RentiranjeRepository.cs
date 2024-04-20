@@ -72,6 +72,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
 
         public async Task<Rentiranje> CreateRentiranje(Rentiranje rentiranje)
         {
+            rentiranje.RentiranjeId = Guid.NewGuid();
             var createdEntity = await context.AddAsync(rentiranje);
             await context.SaveChangesAsync();
             return mapper.Map<Rentiranje>(createdEntity.Entity);

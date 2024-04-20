@@ -61,6 +61,7 @@ namespace RentACarProject.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

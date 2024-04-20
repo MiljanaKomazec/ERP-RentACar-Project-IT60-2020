@@ -21,6 +21,7 @@ namespace RentACarProject.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
 
         public IActionResult Authenticate(Principal principal)
         {
