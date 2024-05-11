@@ -33,9 +33,9 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]
-        public ActionResult<List<Automobil>> GetAutomobil(int page = 1, int pageSize = 5)
+        public ActionResult<List<Automobil>> GetAutomobil()
         {
-            List<Automobil> auto = autoRepository.GetAutomobil(page,pageSize);
+            List<Automobil> auto = autoRepository.GetAutomobil();
             if (auto == null || auto.Count == 0)
             {
                 return NoContent();
@@ -193,7 +193,23 @@ namespace RentACarProject.Controllers
 
             return Ok(mapper.Map<List<AutomobilDTO>>(auto));
         }
-   
+
+        [HttpGet("tipMiA/{TipM}/{TipA}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [EnableCors("AllowOrigin")]
+        public ActionResult<List<AutomobilDTO>> GetAutomobilByTipMiA(string TipM, string TipA)
+        {
+            List<Automobil> auto = autoRepository.GetAutomobilByTipMiA(TipM, TipA);
+            if (auto == null || auto.Count == 0)
+            {
+                return NoContent();
+            }
+
+            return Ok(mapper.Map<List<AutomobilDTO>>(auto));
+        }
+
 
 
     }

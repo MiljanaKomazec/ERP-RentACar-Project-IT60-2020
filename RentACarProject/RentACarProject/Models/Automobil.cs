@@ -46,6 +46,10 @@ namespace RentACarProject.Models
         public string ModelAutomobila { get; set; } = null!;
         [Column("cenaPoDanu", TypeName = "numeric(10, 0)")]
         public decimal CenaPoDanu { get; set; }
+        [Column("imageUrl")]
+        [StringLength(300)]
+        [Unicode(false)]
+        public string imageUrl { get; set; } = null!;
 
         [JsonIgnore]
         [InverseProperty(nameof(Rentiranje.Automobil))]

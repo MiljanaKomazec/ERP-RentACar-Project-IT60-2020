@@ -6,7 +6,7 @@ namespace RentACarProject.Repository.AutomobilRepository
 { 
     public interface IAutomobilRepository
     {
-        List<Automobil> GetAutomobil(int page, int pageSize);
+        List<Automobil> GetAutomobil();
         Automobil GetAutomobilById(Guid AutomobilId);
         Automobil CreateAutomobil(Automobil automobil);
         void UpdateAutomobil(Automobil automobil);
@@ -15,6 +15,7 @@ namespace RentACarProject.Repository.AutomobilRepository
         List<Automobil> GetAutomobilByTipMenjaca(string TipM);
         List<Automobil> GetAutomobilByTipA(string TipA);
         List<Automobil> GetAutomobilByMarka(string MarkaA);
+        List<Automobil> GetAutomobilByTipMiA(string TipM, string TipA);
 
         bool SaveChanges();
     } 

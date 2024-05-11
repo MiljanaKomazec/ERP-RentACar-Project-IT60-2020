@@ -56,6 +56,10 @@ namespace RentACarProject.Profiles
                .ForMember(dest => dest.Automobil, opt => opt.MapFrom(src => src.Automobil)) */
               
                .ReverseMap();
+            CreateMap<Rentiranje, RentiranjeDostupnostDTO>()
+               .ForMember(dest => dest.DatumPocetkaIzdavanja, opt => opt.MapFrom(src => src.DatumPocetkaIzdavanja))
+               .ForMember(dest => dest.DatumKrajaIzdavanja, opt => opt.MapFrom(src => src.DatumKrajaIzdavanja))
+               .ReverseMap();
             CreateMap<Rentiranje, Rentiranje>(); 
 
         } 

@@ -19,6 +19,7 @@ namespace RentACarProject.Profiles
                 .ForMember(dest => dest.MarkaAutomobila, opt => opt.MapFrom(src => src.MarkaAutomobila))
                 .ForMember(dest => dest.ModelAutomobila, opt => opt.MapFrom(src => src.ModelAutomobila))
                 .ForMember(dest => dest.CenaPoDanu, opt => opt.MapFrom(src => src.CenaPoDanu))
+                .ForMember(dest => dest.imageUrl, opt => opt.MapFrom(src => src.imageUrl))
                 .ReverseMap();
             CreateMap<Automobil, Automobil>();
         }

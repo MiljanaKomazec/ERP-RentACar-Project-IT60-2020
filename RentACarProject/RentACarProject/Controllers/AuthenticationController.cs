@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RentACarProject.DTO;
 using RentACarProject.Helpers;
@@ -22,6 +23,7 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [EnableCors("AllowOrigin")]
 
         public IActionResult Authenticate(Principal principal)
         {

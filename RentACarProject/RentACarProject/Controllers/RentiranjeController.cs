@@ -211,5 +211,23 @@ namespace RentACarProject.Controllers
 
             return Ok(mapper.Map<List<RentiranjeDTO>>(rentiranje));
         }
+
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet("dostupnost/{AutomobilId}")]
+        [EnableCors("AllowOrigin")]
+        public async Task<ActionResult<List<RentiranjeDostupnostDTO>>> GetDostupnostRentiranjeByAutomobilId(Guid AutomobilId)
+        {
+            var rentiranje = await rentRepository.GetRentiranjeByAutomobilId(AutomobilId);
+
+            if (rentiranje == null || rentiranje.Count == 0)
+            {
+                return NoContent();
+            }
+
+
+            return Ok(mapper.Map<List<RentiranjeDostupnostDTO>>(rentiranje));
+        }
     }
 }

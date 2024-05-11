@@ -48,6 +48,7 @@ namespace RentACarProject.Controllers
         [HttpGet("{KorisnikId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [EnableCors("AllowOrigin")]
         public ActionResult<KorisnikDTO> GetKorisnikById(Guid KorisnikId)
         {
             var korisnik = korisnikRepository.GetKorisnikById(KorisnikId);
@@ -65,6 +66,7 @@ namespace RentACarProject.Controllers
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [EnableCors("AllowOrigin")]
 
         public ActionResult<Korisnik> CreateKorisnik([FromBody] KorisnikCreateDTO korisnik)
         {
@@ -97,6 +99,7 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [EnableCors("AllowOrigin")]
         public IActionResult DeleteKorisnik(Guid KorisnikId)
         {
             try
@@ -123,7 +126,7 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
+        [EnableCors("AllowOrigin")]
         public ActionResult<KorisnikDTO> UpdateKorisnik(Guid KorisnikId, [FromBody] KorisnikUpdateDTO korisnik)
         {
             try

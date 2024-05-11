@@ -23,16 +23,12 @@ namespace RentACarProject.Repository.AutomobilRepository
             return context.SaveChanges() > 0;
         }
 
-        public List<Automobil> GetAutomobil(int page, int pageSize)
+        public List<Automobil> GetAutomobil()
         {
-            try
-            {
-                var automobili = context.Automobils.ToList();
-                var totalCount =automobili.Count;
-                var totalPages = (int)Math.Ceiling((decimal)totalCount / pageSize);
+            try{
+                
+                
                 var obj = context.Automobils
-                    .Skip((page-1)*pageSize)
-                    .Take(pageSize)
                     .ToList();
                 if (obj != null)
                 {
@@ -98,6 +94,18 @@ namespace RentACarProject.Repository.AutomobilRepository
         public List<Automobil> GetAutomobilByMarka(string MarkaA)
         {
             var automobili = context.Automobils.Where(m => m.MarkaAutomobila == MarkaA)
+                                                                       .ToList();
+            foreach (Automobil automobil in automobili)
+            {
+                Console.WriteLine(automobil);
+            }
+            return automobili;
+        }
+
+        public List<Automobil> GetAutomobilByTipMiA(string TipM, string TipA)
+        {
+            var automobili = context.Automobils.Where(m => m.TipMenjaca == TipM)
+                                               .Where(a => a.TipAutomobila == TipA)
                                                                        .ToList();
             foreach (Automobil automobil in automobili)
             {

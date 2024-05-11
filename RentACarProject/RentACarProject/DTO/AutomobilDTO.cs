@@ -15,5 +15,6 @@ namespace RentACarProject.DTO
         public string MarkaAutomobila { get; set; } = null!;
         public string ModelAutomobila { get; set; } = null!;
         public decimal CenaPoDanu { get; set; }
+        public string imageUrl { get; set; } = null!;
     }
 }
