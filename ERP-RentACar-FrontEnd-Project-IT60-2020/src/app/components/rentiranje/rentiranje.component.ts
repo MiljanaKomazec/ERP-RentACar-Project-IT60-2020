@@ -3,7 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Automobil } from 'src/app/models/automobil';
 import { Rentiranje } from 'src/app/models/rentiranje';
+import { AuthenticateService } from 'src/app/service/authenticate.service';
 import { AutomobilService } from 'src/app/service/automobil.service';
+import { LogInDialogComponent } from '../dialog/logIn/log-in-dialog/log-in-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-rentiranje',
@@ -20,7 +23,9 @@ export class RentiranjeComponent {
 
   constructor(private route: ActivatedRoute,
     private automobilSerivce: AutomobilService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticateService,
+    private dialog: MatDialog
 
   ) { }
 
@@ -79,5 +84,20 @@ export class RentiranjeComponent {
   goBack() {
     this.router.navigate(['/automobili']); // Zamijenite '/' sa stvarnim putem do početne stranice ako je potrebno
   }
+
+
+  rentiraj() {
+    if (!this.authService.isLoggedIn) {
+        this.openLoginDialog();
+    } else {
+        
+    }
+  }
+
+  openLoginDialog() {
+    this.dialog.open(LogInDialogComponent, {
+        disableClose: true, 
+    });
+}
   
 }

@@ -8,9 +8,13 @@
         </ul>
       </nav>
       <mat-icon class="mi" [matMenuTriggerFor]="menu" (click)="toggleMenu()">perm_identity</mat-icon>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="openDialogLogIn()" >Log In</button>
-        <button mat-menu-item>Sign up</button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item *ngIf="!isLoggedIn()" (click)="openDialogLogIn()" >Log In</button>
+        <button mat-menu-item *ngIf="!isLoggedIn()">Sign up</button>
+        <button mat-menu-item *ngIf="isLoggedIn()" (click)="isAdmin()">Moja Rentiranja</button>
+        <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()">Pregled korisnika</button>
+        <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()">Sva Rentiranja</button>
+        <button mat-menu-item *ngIf="isLoggedIn()" (click)="logout()">Log Out</button>
       </mat-menu>
     </div>
   </div>

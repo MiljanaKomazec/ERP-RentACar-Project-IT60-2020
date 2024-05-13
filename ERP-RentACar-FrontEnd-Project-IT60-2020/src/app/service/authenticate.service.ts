@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { TokenClass } from "../models/token";
 import { jwtDecode } from "jwt-decode";
 import { Observable, tap } from "rxjs";
+import { Guid } from "guid-typescript";
 
 @Injectable({
     providedIn: 'root'
@@ -24,23 +25,31 @@ import { Observable, tap } from "rxjs";
       
 
     doLogout() {
-        let removeToken = localStorage.removeItem('token');
-        if (removeToken == null) {
-        this.router.navigate(['login']); }
+        return localStorage.removeItem('token');
+        
     }
 
     getToken() {
         return localStorage.getItem('token');
     }
     
-    decodeToken() :TokenClass {
-        let token = this.getToken();
-        try {
-        return jwtDecode(token!)
-        } catch (Error) {
-        return new TokenClass;
-        }
-    }
+    decodeToken(): TokenClass {
+      let token = this.getToken();
+      const tokenObj = new TokenClass(); 
+  
+      try {
+          const decodedToken: { [key: string]: string } = jwtDecode(token!);
+          tokenObj.Role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || ''; 
+          tokenObj.Id = decodedToken["id"] ? Guid.parse(decodedToken["id"]) : Guid.createEmpty(); 
+      } catch (error) {
+          console.error("Error decoding token:", error);
+          
+          return new TokenClass();
+      }
+  
+      return tokenObj; 
+  }
+  
         
     get isLoggedIn(){
         let authToken = localStorage.getItem('token');

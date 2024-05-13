@@ -35,8 +35,10 @@ namespace RentACarProject.Helpers
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.Role, user.Uloga),
-                new Claim(ClaimTypes.NameIdentifier, user.KorisnikId.ToString())
+               new Claim(ClaimTypes.Role, user.Uloga),
+               //new Claim(ClaimTypes.NameIdentifier, user.KorisnikId.ToString()),
+                //new Claim("Roles", user.Uloga),
+               new Claim("Id", user.KorisnikId.ToString())
             };
 
             var token = new JwtSecurityToken(configuration["Jwt:Issuer"],

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { LogInDialogComponent } from '../../dialog/logIn/log-in-dialog/log-in-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthenticateService } from 'src/app/service/authenticate.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent {
   @ViewChild(MatMenuTrigger) menu!: MatMenuTrigger;
 
   constructor(
-    private dialog: MatDialog) {}
+    private dialog: MatDialog,
+    public authService: AuthenticateService) {}
 
   toggleMenu() {
     if (this.menu) {
@@ -30,6 +32,22 @@ export class HeaderComponent {
         }
       }
     )
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+    
+  }
+  logout(): void {
+    this.authService.doLogout();
+    console.log(localStorage)
+    console.log('isLoggedIn after logout:', this.authService.isLoggedIn);
+  }
+
+  isAdmin(): boolean {
+    const currentUser = this.authService.decodeToken();  
+    return currentUser.Role === 'Admin'; 
+    
   }
 
 }
