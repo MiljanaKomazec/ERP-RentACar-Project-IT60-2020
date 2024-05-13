@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="sidebar">
+  <form [formGroup]="filterForm">
+    <mat-form-field class="pretraga">
+      <input matInput placeholder="Pretraga Automobila" name="pretraga" (keyup)="applyFilter($event)">
+    </mat-form-field>
+    <h3>Tip Menjača</h3>
+    <label>
+      <input type="radio" formControlName="tipMenjaca" value="manuelni"> Manuelni
+    </label>
+    <label>
+      <input type="radio" formControlName="tipMenjaca" value="automatik"> Automatski
+    </label>
+    <h3>Tip karoserije</h3>
+    <label>
+      <input type="radio" formControlName="tipKaroserije" value="limuzina"> Limuzina
+    </label>
+    <label>
+      <input type="radio" formControlName="tipKaroserije" value="hecbek"> Hecbek
+    </label>
+    <label>
+      <input type="radio" formControlName="tipKaroserije" value="dzip"> Dzip
+    </label>
+  </form>
+  <h3>Sortiraj</h3>
+  <mat-radio-group [(ngModel)]="sortOrder">
+    <mat-radio-button class="matradio" value="rastuce" (click)="sortiraj('rastuce')">Po Nižoj Ceni</mat-radio-button>
+    <mat-radio-button value="opadajuce" (click)="sortiraj('opadajuce')">Po Višoj Ceni</mat-radio-button>
+  </mat-radio-group>
+  <button class="buttonF" (click)="resetujFilter()">Ukloni Filtere</button>
+</div>
+<div class="body">
+  <div class="car-container">
+    <div class="car" *ngFor="let automobil of getDisplayedAutomobili()">     
+
+      <div class="car-wrapper">
+        <img [src]="automobil.imageUrl" alt="Car Image" (mouseover)="showDetails(automobil)">
+        <div class="car-details" *ngIf="selectedAutomobil === automobil" >
+            <h3>{{ automobil.markaAutomobila + " " + automobil.modelAutomobila}}</h3>
+            <p>Godiste Automobila: {{ automobil.godisteAutomobila }}</p>
+            <p>Tip Automobila: {{ automobil.tipAutomobila }}</p>
+            <h3>Cena po danu: {{ automobil.cenaPoDanu + " €"}}</h3>
+            <div>
+              <button mat-raised-button class="button" (click)="openDialog(automobil.automobilId)">Rezervisani Datumi</button>
+              <button mat-raised-button class="button" style="float: right;" (click)="goToRentiranje(automobil.automobilId)" >Rentiraj</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <mat-paginator class="mp" [length]="automobili.length" [pageSize]="pageSize" [pageIndex]="pageIndex"
+               (page)="onPageChange($event)">
+  </mat-paginator>
+
+
+</div>
+<app-footer></app-footer>

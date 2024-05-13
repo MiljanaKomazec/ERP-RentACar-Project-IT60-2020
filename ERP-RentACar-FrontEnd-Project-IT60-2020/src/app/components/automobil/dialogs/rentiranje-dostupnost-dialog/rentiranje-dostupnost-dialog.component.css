@@ -1,0 +1,32 @@
+.card-body{
+    width: 500px;
+    height: auto;
+    text-align: center;
+    align-content: center;
+}
+
+table {
+    width: 100%;
+    border: 1px solid;
+    align-content: center;
+    border-color: #a5a5a5;
+    background-color: black;
+    color: #a5a5a5;
+  }
+  
+  th {
+    height: 70px;
+    border: 1px solid;
+    border-color: #a5a5a5;
+    background-color: black;
+    color: #a5a5a5;
+  }
+
+  td {
+    height: 70px;
+    border: 1px solid;
+    border-color: #a5a5a5;
+    background-color: black;
+    color: #a5a5a5;
+  }
+
