@@ -27,6 +27,8 @@ import { LogInDialogComponent } from './components/dialog/logIn/log-in-dialog/lo
 import { RentiranjaAdminComponent } from './components/rentiranjaAdmin/rentiranja-admin/rentiranja-admin.component';
 import { SingUpDialogComponent } from './components/dialog/singUp/sing-up-dialog/sing-up-dialog.component';
 import { KorisniciAdminComponent } from './components/korisniciAdmin/korisnici-admin/korisnici-admin.component';
+import { RentiranjeUADDialogComponent } from './components/dialog/rentiranjeUpdateAndDelete/rentiranje-uaddialog/rentiranje-uaddialog.component';
+import { RentiranjeUadDialogComponent } from './components/dialog/rentiranjeUpdateAndDelete/rentiranje-uad-dialog/rentiranje-uad-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -51,6 +53,8 @@ const appRoutes: Routes = [
     RentiranjaAdminComponent,
     SingUpDialogComponent,
     KorisniciAdminComponent,
+    RentiranjeUADDialogComponent,
+    RentiranjeUadDialogComponent,
 
   ],
   imports: [
