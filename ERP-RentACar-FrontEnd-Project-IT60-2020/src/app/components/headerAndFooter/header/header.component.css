@@ -1,0 +1,41 @@
+.header-content {
+  display: flex;
+  font-family: sans-serif;
+  align-items: center; /* Vertikalno centriraj sadržaj */
+}
+.header {
+  background-color: #333;
+  color: black;
+  padding: 10px 0;
+}
+
+.header-content h1 {
+  font-size: 1.5em;
+  margin: 0; /* Ukloni margine kako bi se izbegli nepotrebni prostori */
+  margin-left: 25px;
+}
+
+.header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.header a {
+  color: black;
+}
+
+.mi {
+  margin-left: auto;
+  margin-right: 25px; /* Pomeri ikonicu na levo */
+}
+
+.img {
+  width: 30px;
+  height: 30px;
+}

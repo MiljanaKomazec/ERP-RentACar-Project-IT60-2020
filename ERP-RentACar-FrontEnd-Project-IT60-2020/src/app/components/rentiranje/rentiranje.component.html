@@ -1,0 +1,40 @@
+<body>
+    <div class="container">
+      <div class="image-wrapper">
+        <img [src]="automobil.imageUrl" alt="Image description">
+      </div>
+        <div class="text-wrapper">
+        <form #formControl="ngForm">
+          <h1>{{ automobil.markaAutomobila + " " + automobil.modelAutomobila}}</h1>
+          <h3>Godiste Automobila: {{ automobil.godisteAutomobila }} | Tip Automobila: {{ automobil.tipAutomobila }} | {{ automobil.tipMenjaca }}</h3>
+          <p>Kubikaža: {{automobil.kubikaza +'cm3'}} | Broj Konjskih Snaga: {{automobil.konjskaSnaga + 'KS'}}</p>
+          <h3>Cena po danu: {{ automobil.cenaPoDanu + " €"}}</h3>
+          <div>
+          <mat-form-field class="form-field">
+            <input matInput [matDatepicker]="datumPocetkaIzdavanja" placeholder="Datum Pocetka" name="Datum Pocetka" 
+                [(ngModel)]="rentiranje.datumPocetkaIzdavanja" (dateChange)="calculateNumberOfDays()" required/>
+            <mat-datepicker-toggle matSuffix [for]="datumPocetkaIzdavanja"> </mat-datepicker-toggle>
+            <mat-datepicker #datumPocetkaIzdavanja></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="form-field">
+            <input matInput [matDatepicker]="datumKrajaIzdavanja" placeholder="Datum Kraja" name="Datum Kraja" 
+                [(ngModel)]="rentiranje.datumKrajaIzdavanja" (dateChange)="calculateNumberOfDays()" required/>
+            <mat-datepicker-toggle matSuffix [for]="datumKrajaIzdavanja"> </mat-datepicker-toggle>
+            <mat-datepicker #datumKrajaIzdavanja></mat-datepicker>
+          </mat-form-field>
+          </div>
+          <p>Broj Dana Izdavanje:</p>
+          <mat-form-field class="form-field">
+            <input matInput placeholder="Broj dana izdavanja" name="Broj Dana Izdavanja" [(ngModel)]="rentiranje.brojDanaIzdavanja" disabled/>
+          </mat-form-field>
+          <p>Ukupna cena rentiranja: {{ calculateTotalPrice() }} €</p>
+        </form>
+        
+        <div class="mat-dialog-actions form-field">
+          <button mat-raised-button class="button" (click)="goBack()">Nazad</button>
+          <button mat-raised-button class="button" type="submit" [disabled]="!formControl.valid" (click)="rentiraj()">Rentiraj</button>
+        </div>
+      </div>
+      </div>
+    
+</body>

@@ -1,0 +1,28 @@
+.footer {
+    background-color: #333;
+    color: #000000;
+    padding: 15px 0;
+    text-align: center;
+  }
+  
+  .footer .container {
+    width: 500px; /* Adjust for desired container width */
+    margin: 0 auto; /* Centers the container horizontally */
+  }
+  
+  .footer p {
+    margin-bottom: 10px;
+  }
+  
+  .footer .social-links {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer .social-links li {
+    margin-right: 10px;
+  }
+  
+  .footer .social-links li:last-child {
+    margin-right: 0;
+  }

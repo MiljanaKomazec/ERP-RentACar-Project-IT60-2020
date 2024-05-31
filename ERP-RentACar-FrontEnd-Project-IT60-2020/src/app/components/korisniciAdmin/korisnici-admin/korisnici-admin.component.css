@@ -1,0 +1,80 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.outer-container {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centriranje horizotalno */
+    align-items: center;     /* Centriranje vertikalno */
+    padding: 20px;
+    background-color: black; /* Promijenite ovu boju prema vašim potrebama */
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%; /* Osigurava da container zauzme sav horizontalni prostor */
+    background-color: #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 5px solid #333; /* Dodajte okvir oko containera ako je potrebno */
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+}
+
+.korisnik-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.korisnik-table th, .korisnik-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.korisnik-table th {
+    background-color: black;
+    color: #656565;
+}
+
+.korisnik-table tr {
+    background-color: #656565;
+    text-align: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: none;
+    background-color: black;
+    color: #656565;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #333;
+    cursor: not-allowed;
+}
+

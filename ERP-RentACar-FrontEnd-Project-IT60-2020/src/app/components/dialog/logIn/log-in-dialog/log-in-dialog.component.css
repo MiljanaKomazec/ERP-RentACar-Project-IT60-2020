@@ -1,0 +1,35 @@
+.button {
+    background-color: black;
+    border: none;
+    color: #a5a5a5;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .button:disabled {
+    background-color: #383838; 
+    color: #a5a5a5; 
+    cursor: not-allowed; 
+  }
+  .container {
+    width: 100%;
+    text-align: center; /* Poravnavanje na centar */
+  }
+  
+  .mat-dialog-actions {
+    margin: auto; /* Centriranje horizontalno */
+  }
+  
+  .form {
+    margin: auto; /* Centriranje horizontalno */
+    margin-bottom: 20px; /* Razmak između formi */
+  }

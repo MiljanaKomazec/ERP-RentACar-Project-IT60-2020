@@ -1,0 +1,121 @@
+  
+  .car-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .car {
+    width: calc(100% / 3);
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .car-wrapper {
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #a5a5a5;
+    border-radius: 5px;
+    margin: 0;
+
+  }
+  
+  .car img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+    position: relative;
+    margin-bottom: 0;
+    margin: 0; 
+    padding: 0; 
+    border: none; 
+    vertical-align: top;
+
+  }
+  
+  .car:hover img {
+    transform: scale(1.1);
+  }
+  
+  .car-details {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: #a5a5a5;
+  
+    padding: 10px;
+    box-sizing: border-box;
+    transition: bottom 0.3s ease;
+  }
+  
+  .car:hover .car-details {
+    bottom: 0;
+  }
+  
+  .body {
+    background-color: black;
+    min-height: 100vh;
+  }
+
+  .buttonF {
+    background-color: black;
+    border: none;
+    color: #a5a5a5;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-top: 30px;
+    cursor: pointer;
+    width: 190px;
+  }
+
+  .button {
+    background-color: black;
+    border: none;
+    color: #a5a5a5;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 2px;
+    margin-left: 2px;
+    cursor: pointer;
+  }
+
+  .pretraga{
+    width: 190px;
+    height: 70px;
+    margin-bottom: 0px;
+  }
+
+  .matradio{
+    margin-top: 5px;
+  }
+
+  .sidebar {
+    float: left;
+    width: 200px;
+    padding: 20px;
+    background-color: #333;
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 15px;
+    color: #a5a5a5;
+    margin-top: 10px;
+  }
+  
+  .sidebar label {
+    display: block;
+    margin-bottom: 15px;
+    color: #a5a5a5;
+  }
+
+  .mp{
+    background-color: #333;
+  }

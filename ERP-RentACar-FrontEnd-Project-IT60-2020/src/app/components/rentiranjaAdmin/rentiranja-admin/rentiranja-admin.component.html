@@ -1,0 +1,61 @@
+<app-header></app-header>
+<body>
+    <div class="page-container">
+        <div class="outer-container">
+            <div class="container">
+                <h1>Sva Rentiranja</h1>
+                <table class="rent-table">
+                    <thead>
+                        <tr>
+                            <th>Rentiranje ID</th>
+                            <th>Broj Dana Izdavanja</th>
+                            <th>Datum Pocetka</th>
+                            <th>Datum Kraja</th>
+                            <th>Ukupna Cena</th>
+                            <th>Placeno</th>
+                            <th>Datum Placanja</th>
+                            <th>Pristupni Kod</th>
+                            <th>Korisnik</th>
+                            <th>Automobil</th>
+                            <th>Akcije</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rentiranje of rentiranja">
+                            <td>{{ rentiranje.rentiranjeId }}</td>
+                            <td>{{ rentiranje.brojDanaIzdavanja }}</td>
+                            <td>{{ rentiranje.datumPocetkaIzdavanja | date }}</td>
+                            <td>{{ rentiranje.datumKrajaIzdavanja | date }}</td>
+                            <td>{{ rentiranje.ukupnaCenaRentiranja }}</td>
+                            <td>{{ rentiranje.placenoR }}</td>
+                            <td>{{ rentiranje.datumPlacanja ? (rentiranje.datumPlacanja | date) : '' }}</td>
+                            <td>{{ rentiranje.pristupniKod }}</td>
+                            <td>{{ rentiranje.korisnik.imeK + " " + rentiranje.korisnik.przK}}</td>
+                            <td>{{ rentiranje.automobil.markaAutomobila + " " + rentiranje.automobil.modelAutomobila }}</td>
+                            <td>
+                                <button mat-raised-button type="button" matTooltip="Izmeni Korisnika" 
+                                     class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                     <i class="material-icons">edit</i>
+                                </button>
+                                <button mat-raised-button type="button" matTooltip="Ukloni Korisnika" 
+                                     class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                     <i class="material-icons">close</i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="rentiranja.length === 0">
+                            <td colspan="11">Nema rentiranja za prikaz.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+                    <button *ngFor="let page of [].constructor(Math.ceil(totalRentiranja / pageSize)); let i = index"
+                            (click)="goToPage(i + 1)" [disabled]="currentPage === i + 1">{{ i + 1 }}</button>
+                    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === Math.ceil(totalRentiranja / pageSize)">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>

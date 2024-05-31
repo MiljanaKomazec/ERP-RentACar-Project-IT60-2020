@@ -1,0 +1,55 @@
+<app-header></app-header>
+<body>
+    <div class="page-container">
+        <div class="outer-container">
+            <div class="container">
+                <h1>Svi Korisnici</h1>
+                <table class="korisnik-table">
+                    <thead>
+                        <tr>
+                            <th>Korisnik ID</th>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Grad</th>
+                            <th>Adresa</th>
+                            <th>Kontakt</th>
+                            <th>Uloga</th>
+                            <th>Akcije</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let korisnik of korisnici">
+                            <td>{{ korisnik.korisnikId }}</td>
+                            <td>{{ korisnik.imeK }}</td>
+                            <td>{{ korisnik.przK }}</td>
+                            <td>{{ korisnik.gradK }}</td>
+                            <td>{{ korisnik.adresaK }}</td>
+                            <td>{{ korisnik.kontaktK }}</td>
+                            <td>{{ korisnik.uloga }}</td>
+                            <td>
+                                <button mat-raised-button type="button" matTooltip="Izmeni Korisnika" 
+                                     class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                     <i class="material-icons">edit</i>
+                                </button>
+                                <button mat-raised-button type="button" matTooltip="Ukloni Korisnika" 
+                                     class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                     <i class="material-icons">close</i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="korisnici.length === 0">
+                            <td colspan="8">Nema korisnika za prikaz.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+                    <button *ngFor="let page of [].constructor(Math.ceil(totalKorisnici / pageSize)); let i = index"
+                            (click)="goToPage(i + 1)" [disabled]="currentPage === i + 1">{{ i + 1 }}</button>
+                    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === Math.ceil(totalKorisnici / pageSize)">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>

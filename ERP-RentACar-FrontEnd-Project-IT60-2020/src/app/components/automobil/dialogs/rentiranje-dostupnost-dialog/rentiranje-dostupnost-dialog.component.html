@@ -1,0 +1,21 @@
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="text-primary">
+                <th>Početak rentiranja</th>
+                <th>Kraj rentiranja</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let retiranje of rentiranja">
+                    <td> 
+                        {{ retiranje.datumPocetkaIzdavanja| date : "yyyy-MM-dd HH:mm:ss"  }}
+                    </td>
+                    <td class="text-left">
+                        {{ retiranje.datumKrajaIzdavanja| date : "yyyy-MM-dd HH:mm:ss"  }}
+                    </td>
+         
+                </tr>
+            </tbody>
+       </table>
+    </div>
+</div>

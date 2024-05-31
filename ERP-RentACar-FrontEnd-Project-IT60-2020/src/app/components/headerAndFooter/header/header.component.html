@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <h1 routerLink="/automobili">AM Auto</h1>
+      <nav>
+        <ul>
+          <li><a routerLink="/automobili">Home</a></li>
+        </ul>
+      </nav>
+      <mat-icon class="mi" [matMenuTriggerFor]="menu" (click)="toggleMenu()">perm_identity</mat-icon>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item *ngIf="!isLoggedIn()" (click)="openDialogLogIn()" >Log In</button>
+        <button mat-menu-item *ngIf="!isLoggedIn()" (click)="openDialogSingUp()">Sign up</button>
+        <button mat-menu-item *ngIf="isLoggedIn() && !isAdmin()">Moja Rentiranja</button>
+        <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()" (click)="goToAllKorisnici()">Pregled korisnika</button>
+        <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()" (click)="goToAllRentiranje()">Sva Rentiranja</button>
+        <button mat-menu-item *ngIf="isLoggedIn()" (click)="logout()">Log Out</button>
+      </mat-menu>
+    </div>
+  </div>
+</header>
