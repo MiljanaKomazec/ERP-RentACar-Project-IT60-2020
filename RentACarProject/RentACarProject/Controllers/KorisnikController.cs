@@ -33,7 +33,7 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [EnableCors("AllowOrigin")]
-        public ActionResult<PaginatedRentiranjeDTO> GetKorisnik([FromQuery] int page = 1, [FromQuery] int pageSize = 5)
+        public ActionResult<PaginatedKorisnikDTO> GetKorisnik([FromQuery] int page = 1, [FromQuery] int pageSize = 5)
         {
             var response = korisnikRepository.GetKorisnik(page, pageSize);
             if (response == null || response.Korisnici.Count == 0)

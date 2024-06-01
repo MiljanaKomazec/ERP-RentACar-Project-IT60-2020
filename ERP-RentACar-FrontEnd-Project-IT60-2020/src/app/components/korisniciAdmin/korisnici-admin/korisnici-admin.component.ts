@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Guid } from 'guid-typescript';
 import { Korisnik } from 'src/app/models/korisnik';
 import { KorisnikService } from 'src/app/service/korisnik.service';
+import { KorisnikUadDialogComponent } from '../../dialog/korisnikUpdateAndDelete/korisnik-uad-dialog/korisnik-uad-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-korisnici-admin',
@@ -15,7 +18,9 @@ export class KorisniciAdminComponent {
   totalKorisnici: number = 0;
   Math = Math; 
 
-  constructor(private korisnikService: KorisnikService) { }
+  constructor(private korisnikService: KorisnikService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.loadKorisnici();
@@ -23,6 +28,7 @@ export class KorisniciAdminComponent {
 
   loadKorisnici(): void {
     this.korisnikService.getKorisnici(this.currentPage, this.pageSize).subscribe(response => {
+      console.log(response);
       this.korisnici = response.korisnici;
       this.totalKorisnici = response.totalCount;
     });
@@ -32,5 +38,32 @@ export class KorisniciAdminComponent {
     this.currentPage = page;
     this.loadKorisnici();
   }
+
+  public openDialog(
+    flag: number,
+    korisnikId?: Guid,
+    imeK?: String,
+    przK?: String,
+    jmbgK?: String,
+    gradK?: String,
+    adresaK?: String,
+    kontaktK?: String,
+    uloga?: String,
+    userNameK?: String,
+    passwordK?: String
+
+  ): void {
+    console.log("Flag value:", flag);
+    const dialogRef = this.dialog.open(KorisnikUadDialogComponent, {
+      data: { korisnikId, imeK, przK, jmbgK, gradK, adresaK, kontaktK, uloga, userNameK, passwordK },
+    });
+    dialogRef.componentInstance.flag = flag;
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == 1) {
+        this.loadKorisnici();
+      }
+    });
+  }
+
 
 }

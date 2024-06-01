@@ -1,1 +1,48 @@
-<p>korisnik-uad-dialog works!</p>
+<div class="container" *ngIf="flag === 1 || flag === 2">
+    <h3 mat-dialog-title *ngIf="flag == 1">Ažuriranje Korisnika: {{data.imeK + " " + data.przK}}</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Brisanje Korisnika: {{data.imeK + " " + data.przK }}</h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Ime" name="Ime" [disabled]="flag==2" [(ngModel)]="data.imeK" required />
+        </mat-form-field>
+       </div>
+
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Prezime" name="Prezime" [disabled]="flag==2" [(ngModel)]="data.przK" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Grad" name="Grad" [disabled]="flag==2" [(ngModel)]="data.gradK" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Adresa" name="Adresa" [disabled]="flag==2" [(ngModel)]="data.adresaK" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Kontakt" name="Kontakt" [disabled]="flag==2" [(ngModel)]="data.kontaktK" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Uloga" name="Uloga" [disabled]="flag==2" [(ngModel)]="data.uloga" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Username" name="Username" [disabled]="flag==2" [(ngModel)]="data.userNameK" required />
+        </mat-form-field>
+       </div>
+    </form>
+
+    <div class="mat-dialog-actions form-field">
+        <button mat-raised-button class="button" *ngIf="flag == 1" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="update()">Ažuriraj</button>
+        <button mat-raised-button class="button" *ngIf="flag == 2" type="submit" mat-dialog-close="1" (click)="delete()">Obriši</button>
+        <button mat-raised-button class="button" (click)="cancel()">Poništi</button>
+    </div>
+</div>

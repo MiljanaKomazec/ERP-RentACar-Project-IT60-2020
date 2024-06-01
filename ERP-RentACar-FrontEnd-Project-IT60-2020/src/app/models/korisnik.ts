@@ -1,7 +1,7 @@
 import { Guid } from 'guid-typescript';
 
 export class Korisnik{
-    korisnikId?:Guid;
+    korisnikId!:Guid;
     jmbgK?:String;
     imeK!:String;
     przK!:String;
@@ -9,6 +9,6 @@ export class Korisnik{
     adresaK!:String;
     kontaktK!:String;
     uloga?:String;
-    username!:String;
-    password!:String;
+    userNameK!:String;
+    passwordK!:String;
 }

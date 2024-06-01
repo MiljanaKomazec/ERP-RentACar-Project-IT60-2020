@@ -9,7 +9,7 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 1px;
     margin-bottom: 20px;
     margin-left: 5px;
     margin-right: 5px;
@@ -32,4 +32,8 @@
   .form {
     margin: auto; /* Centriranje horizontalno */
     margin-bottom: 1px; /* Razmak između formi */
+  }
+
+  .form-field{
+    height: 70px;
   }

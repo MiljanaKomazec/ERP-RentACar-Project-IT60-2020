@@ -29,6 +29,8 @@ import { SingUpDialogComponent } from './components/dialog/singUp/sing-up-dialog
 import { KorisniciAdminComponent } from './components/korisniciAdmin/korisnici-admin/korisnici-admin.component';
 import { RentiranjeUadDialogComponent } from './components/dialog/rentiranjeUpdateAndDelete/rentiranje-uad-dialog/rentiranje-uad-dialog.component';
 import { KorisnikUadDialogComponent } from './components/dialog/korisnikUpdateAndDelete/korisnik-uad-dialog/korisnik-uad-dialog.component';
+import { KorisnikProfilComponent } from './components/korisinkProfil/korisnik-profil/korisnik-profil.component';
+import { RentiranjeKorisnikComponent } from './components/rentiranjeKorisnik/rentiranje-korisnik/rentiranje-korisnik.component';
 
 
 const appRoutes: Routes = [
@@ -36,7 +38,9 @@ const appRoutes: Routes = [
   { path: 'rentiranje/:automobilId', component:RentiranjeComponent },
   {path:'', redirectTo:'/automobili', pathMatch:'full'},
   { path: 'rentiranja', component:RentiranjaAdminComponent},
-  { path: 'korisnici', component:KorisniciAdminComponent}
+  { path: 'korisnici', component:KorisniciAdminComponent},
+  { path: 'myRentiranja', component:RentiranjeKorisnikComponent},
+  { path: 'myProfil', component:KorisnikProfilComponent}
   
 ];
 
@@ -55,6 +59,8 @@ const appRoutes: Routes = [
     KorisniciAdminComponent,
     RentiranjeUadDialogComponent,
     KorisnikUadDialogComponent,
+    KorisnikProfilComponent,
+    RentiranjeKorisnikComponent,
 
   ],
   imports: [

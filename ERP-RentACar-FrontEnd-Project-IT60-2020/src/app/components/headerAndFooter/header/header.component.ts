@@ -76,4 +76,12 @@ export class HeaderComponent {
     this.router.navigate(['korisnici']);
   }
 
+  goToMyRentiranja() {
+    this.router.navigate(['myRentiranja']);
+  }
+
+  goToMyProfil() {
+    this.router.navigate(['myProfil']);
+  }
+
 }

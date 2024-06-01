@@ -11,7 +11,8 @@
       <mat-menu #menu="matMenu" >
         <button mat-menu-item *ngIf="!isLoggedIn()" (click)="openDialogLogIn()" >Log In</button>
         <button mat-menu-item *ngIf="!isLoggedIn()" (click)="openDialogSingUp()">Sign up</button>
-        <button mat-menu-item *ngIf="isLoggedIn() && !isAdmin()">Moja Rentiranja</button>
+        <button mat-menu-item *ngIf="isLoggedIn() && !isAdmin()" (click)="goToMyRentiranja()">Moja Rentiranja</button>
+        <button mat-menu-item *ngIf="isLoggedIn() && !isAdmin()" (click)="goToMyProfil()">Moj Profil</button>
         <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()" (click)="goToAllKorisnici()">Pregled korisnika</button>
         <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()" (click)="goToAllRentiranje()">Sva Rentiranja</button>
         <button mat-menu-item *ngIf="isLoggedIn()" (click)="logout()">Log Out</button>

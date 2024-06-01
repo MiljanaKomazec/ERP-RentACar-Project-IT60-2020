@@ -26,8 +26,8 @@ namespace RentACarProject.Profiles
                 .ForMember(dest => dest.GradK, opt => opt.MapFrom(src => src.GradK))
                 .ForMember(dest => dest.AdresaK, opt => opt.MapFrom(src => src.AdresaK))
                 .ForMember(dest => dest.KontaktK, opt => opt.MapFrom(src => src.KontaktK))
-                .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.UserNameK))
-                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.PasswordK))
+                .ForMember(dest => dest.UserNameK, opt => opt.MapFrom(src => src.UserNameK))
+                .ForMember(dest => dest.PasswordK, opt => opt.MapFrom(src => src.PasswordK))
                 .ReverseMap();
             CreateMap<Korisnik, KorisnikUpdateDTO>()
                .ForMember(dest => dest.KorisnikId, opt => opt.MapFrom(src => src.KorisnikId))

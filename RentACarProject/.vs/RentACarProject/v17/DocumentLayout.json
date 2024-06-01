@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|c:\\users\\milja\\onedrive\\desktop\\erp-rentacar-project-it60-2020.git\\erp-rentacar-project-it60-2020\\rentacarproject\\rentacarproject\\repository\\korisnikrepository\\korisnikrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|solutionrelative:rentacarproject\\repository\\korisnikrepository\\korisnikrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|c:\\users\\milja\\onedrive\\desktop\\erp-rentacar-project-it60-2020.git\\erp-rentacar-project-it60-2020\\rentacarproject\\rentacarproject\\controllers\\korisnikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|solutionrelative:rentacarproject\\controllers\\korisnikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|c:\\users\\milja\\onedrive\\desktop\\erp-rentacar-project-it60-2020.git\\erp-rentacar-project-it60-2020\\rentacarproject\\rentacarproject\\profiles\\korinsikprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|solutionrelative:rentacarproject\\profiles\\korinsikprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|c:\\users\\milja\\onedrive\\desktop\\erp-rentacar-project-it60-2020.git\\erp-rentacar-project-it60-2020\\rentacarproject\\rentacarproject\\dto\\korisnikcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24090E1B-1C75-4630-81DF-87EA10AAEBAB}|RentACarProject\\RentACarProject.csproj|solutionrelative:rentacarproject\\dto\\korisnikcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 212,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +35,58 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KorinsikProfile.cs",
+              "DocumentMoniker": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\Profiles\\KorinsikProfile.cs",
+              "RelativeDocumentMoniker": "RentACarProject\\Profiles\\KorinsikProfile.cs",
+              "ToolTip": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\Profiles\\KorinsikProfile.cs",
+              "RelativeToolTip": "RentACarProject\\Profiles\\KorinsikProfile.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwB0AAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T18:37:35.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "KorisnikCreateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\DTO\\KorisnikCreateDTO.cs",
+              "RelativeDocumentMoniker": "RentACarProject\\DTO\\KorisnikCreateDTO.cs",
+              "ToolTip": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\DTO\\KorisnikCreateDTO.cs",
+              "RelativeToolTip": "RentACarProject\\DTO\\KorisnikCreateDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T18:37:24.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "KorisnikRepository.cs",
+              "DocumentMoniker": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\Repository\\KorisnikRepository\\KorisnikRepository.cs",
+              "RelativeDocumentMoniker": "RentACarProject\\Repository\\KorisnikRepository\\KorisnikRepository.cs",
+              "ToolTip": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\Repository\\KorisnikRepository\\KorisnikRepository.cs",
+              "RelativeToolTip": "RentACarProject\\Repository\\KorisnikRepository\\KorisnikRepository.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAmwGgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T18:30:34.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "KorisnikController.cs",
+              "DocumentMoniker": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\Controllers\\KorisnikController.cs",
+              "RelativeDocumentMoniker": "RentACarProject\\Controllers\\KorisnikController.cs",
+              "ToolTip": "C:\\Users\\milja\\OneDrive\\Desktop\\ERP-RentACar-Project-IT60-2020.git\\ERP-RentACar-Project-IT60-2020\\RentACarProject\\RentACarProject\\Controllers\\KorisnikController.cs",
+              "RelativeToolTip": "RentACarProject\\Controllers\\KorisnikController.cs",
+              "ViewState": "AQIAAHoAAAAAAAAAAAAMwIcAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T17:42:40.456Z",
+              "EditorCaption": ""
             }
           ]
         }
