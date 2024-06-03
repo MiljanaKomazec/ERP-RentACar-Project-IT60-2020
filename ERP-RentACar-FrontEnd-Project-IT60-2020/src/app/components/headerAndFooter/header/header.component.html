@@ -15,7 +15,7 @@
         <button mat-menu-item *ngIf="isLoggedIn() && !isAdmin()" (click)="goToMyProfil()">Moj Profil</button>
         <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()" (click)="goToAllKorisnici()">Pregled korisnika</button>
         <button mat-menu-item *ngIf="isLoggedIn() && isAdmin()" (click)="goToAllRentiranje()">Sva Rentiranja</button>
-        <button mat-menu-item *ngIf="isLoggedIn()" (click)="logout()">Log Out</button>
+        <button mat-menu-item *ngIf="isLoggedIn()" (click)="logout()" (click)="goToHomePage()">Log Out</button>
       </mat-menu>
     </div>
   </div>

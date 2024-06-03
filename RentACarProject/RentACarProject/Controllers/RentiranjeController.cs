@@ -181,7 +181,7 @@ namespace RentACarProject.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("korisnik/{KorisnikId}")]
         [EnableCors("AllowOrigin")]
-        public async Task<ActionResult<List<RentiranjeDTO>>> GetRentiranjeByKorisnikId(Guid KorisnikId)
+        public async Task<ActionResult<List<Rentiranje>>> GetRentiranjeByKorisnikId(Guid KorisnikId)
         {
             var rentiranje = await rentRepository.GetRentiranjeByKorisnikId(KorisnikId);
 
@@ -191,7 +191,7 @@ namespace RentACarProject.Controllers
             }
 
 
-            return Ok(mapper.Map<List<RentiranjeDTO>>(rentiranje));
+            return Ok(mapper.Map<List<Rentiranje>>(rentiranje));
         }
 
         [Authorize(Roles = "Admin")]

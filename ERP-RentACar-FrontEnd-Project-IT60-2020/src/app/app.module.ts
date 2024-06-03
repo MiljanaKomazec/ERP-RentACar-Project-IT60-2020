@@ -31,6 +31,7 @@ import { RentiranjeUadDialogComponent } from './components/dialog/rentiranjeUpda
 import { KorisnikUadDialogComponent } from './components/dialog/korisnikUpdateAndDelete/korisnik-uad-dialog/korisnik-uad-dialog.component';
 import { KorisnikProfilComponent } from './components/korisinkProfil/korisnik-profil/korisnik-profil.component';
 import { RentiranjeKorisnikComponent } from './components/rentiranjeKorisnik/rentiranje-korisnik/rentiranje-korisnik.component';
+import { AutomobilDialogComponent } from './components/automobil/dialogs/automobil-dialog/automobil-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
     KorisnikUadDialogComponent,
     KorisnikProfilComponent,
     RentiranjeKorisnikComponent,
+    AutomobilDialogComponent,
 
   ],
   imports: [

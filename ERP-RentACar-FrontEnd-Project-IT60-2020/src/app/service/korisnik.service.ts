@@ -30,4 +30,8 @@ import { Guid } from "guid-typescript";
   public deleteKorisnik(id:Guid):Observable<any> {
     return this.httpClient.delete(`${KORISNIK_URL}/${id}`);
   }
+
+  public getKorisnikById(id:Guid):Observable<any> {
+    return this.httpClient.get(`${KORISNIK_URL}/${id}`);
+  }
 }

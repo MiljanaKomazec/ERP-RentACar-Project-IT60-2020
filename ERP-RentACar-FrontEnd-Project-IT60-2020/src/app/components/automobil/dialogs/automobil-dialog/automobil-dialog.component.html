@@ -1,0 +1,66 @@
+<div class="container" *ngIf="flag === 1 || flag === 2 || flag === 3">
+    <h3 mat-dialog-title *ngIf="flag == 1">Kreiranje Automobila: </h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje Automobila: {{data.markaAutomobila + " " + data.modelAutomobila }}</h3>
+    <h3 mat-dialog-title *ngIf="flag == 3">Brisanje Automobila: {{data.markaAutomobila + " " + data.modelAutomobila }}</h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Broj Šasije" name="Broj Šasije" [disabled]="flag==3" [(ngModel)]="data.brojSasije" required />
+        </mat-form-field>
+       </div>
+
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Kubikaža" name="Kubikaža" [disabled]="flag==3" [(ngModel)]="data.kubikaza" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="KS" name="KS" [disabled]="flag==3" [(ngModel)]="data.konjskaSnaga" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Godište" name="Godište" [disabled]="flag==3" [(ngModel)]="data.godisteAutomobila" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Tip Menjača" name="Tip Menjača" [disabled]="flag==3" [(ngModel)]="data.tipMenjaca" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Tip Automobila" name="Tip Automobila" [disabled]="flag==3" [(ngModel)]="data.tipAutomobila" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Marka Automobila" name="Marka Automobila" [disabled]="flag==3" [(ngModel)]="data.markaAutomobila" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Model Automobila" name="Model Automobila" [disabled]="flag==3" [(ngModel)]="data.modelAutomobila" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Cena Po Danu" name="Cena Po Danu" [disabled]="flag==3" [(ngModel)]="data.cenaPoDanu" required />
+        </mat-form-field>
+       </div>
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Slika" name="Slika" [disabled]="flag==3" [(ngModel)]="data.imageUrl" required />
+        </mat-form-field>
+       </div>
+    </form>
+
+    <div class="mat-dialog-actions form-field">
+        <button mat-raised-button class="button" *ngIf="flag == 1" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="add()">Dodaj</button>
+        <button mat-raised-button class="button" *ngIf="flag == 2" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="update()">Ažuriraj</button>
+        <button mat-raised-button class="button" *ngIf="flag == 3" type="submit" mat-dialog-close="1" (click)="delete()">Obriši</button>
+        <button mat-raised-button class="button" (click)="cancel()">Poništi</button>
+    </div>
+</div>
+

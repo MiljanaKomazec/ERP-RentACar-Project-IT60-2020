@@ -119,3 +119,8 @@
   .mp{
     background-color: #333;
   }
+
+  .btn {
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }

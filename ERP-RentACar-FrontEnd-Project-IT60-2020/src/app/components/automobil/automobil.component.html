@@ -16,10 +16,10 @@
       <input type="radio" formControlName="tipKaroserije" value="limuzina"> Limuzina
     </label>
     <label>
-      <input type="radio" formControlName="tipKaroserije" value="hecbek"> Hecbek
+      <input type="radio" formControlName="tipKaroserije" value="hecbek"> Hečbek
     </label>
     <label>
-      <input type="radio" formControlName="tipKaroserije" value="dzip"> Dzip
+      <input type="radio" formControlName="tipKaroserije" value="SUV"> SUV
     </label>
   </form>
   <h3>Sortiraj</h3>
@@ -28,6 +28,7 @@
     <mat-radio-button value="opadajuce" (click)="sortiraj('opadajuce')">Po Višoj Ceni</mat-radio-button>
   </mat-radio-group>
   <button class="buttonF" (click)="resetujFilter()">Ukloni Filtere</button>
+  <button class="buttonF" *ngIf="isLoggedIn() && isAdmin()" (click)="openDialogAutomobil(1)">Dodaj Automobil</button>
 </div>
 <div class="body">
   <div class="car-container">
@@ -40,6 +41,20 @@
             <p>Godiste Automobila: {{ automobil.godisteAutomobila }}</p>
             <p>Tip Automobila: {{ automobil.tipAutomobila }}</p>
             <h3>Cena po danu: {{ automobil.cenaPoDanu + " €"}}</h3>
+            <div>
+              <button *ngIf="isLoggedIn() && isAdmin()" mat-raised-button type="button" matTooltip="Ažuriraj Automobil" 
+                                     class="btn btn-danger btn-link btn-sm btn-just-icon" (click)="openDialogAutomobil(2, automobil.automobilId , automobil.brojSasije, automobil.kubikaza, automobil.konjskaSnaga,
+                                        automobil.godisteAutomobila, automobil.tipMenjaca, automobil.tipAutomobila, automobil.markaAutomobila,
+                                        automobil.modelAutomobila, automobil.cenaPoDanu, automobil.imageUrl)">
+                                     <i class="material-icons">edit</i>
+              </button>
+              <button *ngIf="isLoggedIn() && isAdmin()" mat-raised-button type="button" matTooltip="Obriši Automobil" 
+                                     class="btn btn-danger btn-link btn-sm btn-just-icon" (click)="openDialogAutomobil(3, automobil.automobilId , automobil.brojSasije, automobil.kubikaza, automobil.konjskaSnaga,
+                                        automobil.godisteAutomobila, automobil.tipMenjaca, automobil.tipAutomobila, automobil.markaAutomobila,
+                                        automobil.modelAutomobila, automobil.cenaPoDanu, automobil.imageUrl)">
+                                     <i class="material-icons">close</i>
+              </button>
+            </div>
             <div>
               <button mat-raised-button class="button" (click)="openDialog(automobil.automobilId)">Rezervisani Datumi</button>
               <button mat-raised-button class="button" style="float: right;" (click)="goToRentiranje(automobil.automobilId)" >Rentiraj</button>

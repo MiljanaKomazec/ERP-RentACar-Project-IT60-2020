@@ -3,9 +3,10 @@ import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { LogInDialogComponent } from '../../dialog/logIn/log-in-dialog/log-in-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthenticateService } from 'src/app/service/authenticate.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SingUpDialogComponent } from '../../dialog/singUp/sing-up-dialog/sing-up-dialog.component';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-header',
@@ -68,6 +69,22 @@ export class HeaderComponent {
     
   }
 
+  goToMyProfil() {
+    const currentUser = this.authService.decodeToken();
+    const korisnikId = currentUser.Id;
+    console.log("Preneseni podaci:", korisnikId);
+  
+    this.router.navigate(['myProfil'], { queryParams: { korisnikId: korisnikId } });
+  }
+
+  goToMyRentiranja() {
+    const currentUser = this.authService.decodeToken();
+    const korisnikId = currentUser.Id;
+    console.log("Preneseni podaci:", korisnikId);
+  
+    this.router.navigate(['myRentiranja'], { queryParams: { korisnikId: korisnikId } });
+  }
+  
   goToAllRentiranje() {
     this.router.navigate(['rentiranja']);
   }
@@ -76,12 +93,8 @@ export class HeaderComponent {
     this.router.navigate(['korisnici']);
   }
 
-  goToMyRentiranja() {
-    this.router.navigate(['myRentiranja']);
-  }
-
-  goToMyProfil() {
-    this.router.navigate(['myProfil']);
+  goToHomePage() {
+    this.router.navigate(['automobili']);
   }
 
 }

@@ -1,1 +1,39 @@
-<p>korisnik-profil works!</p>
+<app-header></app-header>
+<body>
+    <div class="container">
+        <h1>Podaci o korisniku: {{korisnik.imeK}} {{korisnik.przK}}
+            <button mat-raised-button type="button" matTooltip="Izmeni Korisnika" 
+            class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="openDialog(1, korisnik.korisnikId, korisnik.imeK, korisnik.przK,korisnik.jmbgK,
+            korisnik.gradK, korisnik.adresaK, korisnik.kontaktK, korisnik.uloga,korisnik.userNameK, korisnik.passwordK)">
+            <i class="material-icons">edit</i>
+            </button>
+        </h1>
+        <div class="user-data">
+            <div class="data-item">
+                <label for="ime">Ime:</label>
+                <span id="ime">{{korisnik.imeK}}</span>
+            </div>
+            <div class="data-item">
+                <label for="prezime">Prezime:</label>
+                <span id="prezime">{{korisnik.przK}}</span>
+            </div>
+            <div class="data-item">
+                <label for="jmbf">JMBG:</label>
+                <span id="jmbg">{{korisnik.jmbgK}}</span>
+            </div>
+            <div class="data-item">
+                <label for="address">Adresa:</label>
+                <span id="address">{{korisnik.gradK}} , {{korisnik.adresaK}}</span>
+            </div>
+            <div class="data-item">
+                <label for="kontakt">Kontakt:</label>
+                <span id="kontakt">{{korisnik.kontaktK}}</span>
+            </div>
+            <div class="data-item">
+                <label for="username">Username:</label>
+                <span id="username">{{korisnik.userNameK}}</span>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>

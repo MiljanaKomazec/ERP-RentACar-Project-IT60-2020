@@ -40,7 +40,7 @@ import { Guid } from "guid-typescript";
       try {
           const decodedToken: { [key: string]: string } = jwtDecode(token!);
           tokenObj.Role = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || ''; 
-          tokenObj.Id = decodedToken["id"] ? Guid.parse(decodedToken["id"]) : Guid.createEmpty(); 
+          tokenObj.Id = decodedToken["Id"] || ''; 
       } catch (error) {
           console.error("Error decoding token:", error);
           

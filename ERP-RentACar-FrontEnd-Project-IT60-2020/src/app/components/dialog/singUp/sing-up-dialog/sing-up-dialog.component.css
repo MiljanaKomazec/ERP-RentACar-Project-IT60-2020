@@ -9,7 +9,7 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    margin-top: 1px;
+    margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 5px;
     margin-right: 5px;
@@ -21,19 +21,20 @@
     cursor: not-allowed; 
   }
   .container {
-    width: 100%;
+    width: 50vh;
     text-align: center; /* Poravnavanje na centar */
   }
   
   .mat-dialog-actions {
     margin: auto; /* Centriranje horizontalno */
   }
+
+  .mat-dialog-content {
+    max-height: 60vh; /* Maksimalna visina sadržaja */
+    overflow-y: auto; /* Omogućavanje vertikalnog skrolovanja */
+}
   
   .form {
     margin: auto; /* Centriranje horizontalno */
-    margin-bottom: 1px; /* Razmak između formi */
-  }
-
-  .form-field{
-    height: 70px;
+    margin-bottom: 5px; /* Razmak između formi */
   }

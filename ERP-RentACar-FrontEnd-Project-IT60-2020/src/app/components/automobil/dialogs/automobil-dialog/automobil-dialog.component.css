@@ -21,8 +21,11 @@
     cursor: not-allowed; 
   }
   .container {
-    width: 100%;
+    width: 100vh;
     text-align: center; /* Poravnavanje na centar */
+    max-height: 100vh; /* Maksimalna visina dijaloga */
+    padding: 20px; /* Dodatno stilizovanje */
+    box-sizing: border-box; /* Uzimanje paddinga u obzir kod definisanja visine */
   }
   
   .mat-dialog-actions {
@@ -33,8 +36,11 @@
     max-height: 60vh; /* Maksimalna visina sadržaja */
     overflow-y: auto; /* Omogućavanje vertikalnog skrolovanja */
 }
-
   .form {
     margin: auto; /* Centriranje horizontalno */
     margin-bottom: 5px; /* Razmak između formi */
+  }
+
+  .form-field {
+    width: 90vh;
   }

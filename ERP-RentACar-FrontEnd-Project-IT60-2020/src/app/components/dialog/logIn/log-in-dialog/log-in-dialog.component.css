@@ -21,7 +21,7 @@
     cursor: not-allowed; 
   }
   .container {
-    width: 100%;
+    width: 50vh;
     text-align: center; /* Poravnavanje na centar */
   }
   

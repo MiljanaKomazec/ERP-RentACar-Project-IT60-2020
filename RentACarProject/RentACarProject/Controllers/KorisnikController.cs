@@ -44,12 +44,12 @@ namespace RentACarProject.Controllers
             return Ok(response);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Zaposleni, Korisnik")]
         [HttpGet("{KorisnikId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [EnableCors("AllowOrigin")]
-        public ActionResult<KorisnikDTO> GetKorisnikById(Guid KorisnikId)
+        public ActionResult<Korisnik> GetKorisnikById(Guid KorisnikId)
         {
             var korisnik = korisnikRepository.GetKorisnikById(KorisnikId);
 
@@ -58,7 +58,7 @@ namespace RentACarProject.Controllers
                 return NotFound();
             }
 
-            return Ok(mapper.Map<KorisnikDTO>(korisnik));
+            return Ok(mapper.Map<Korisnik>(korisnik));
         }
 
         [HttpPost]

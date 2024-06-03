@@ -7,6 +7,8 @@ import { RentiranjeDostupnostDialogComponent } from './dialogs/rentiranje-dostup
 import { NavigationExtras, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { AuthenticateService } from 'src/app/service/authenticate.service';
+import { AutomobilDialogComponent } from './dialogs/automobil-dialog/automobil-dialog.component';
 
 @Component({
   selector: 'app-automobil',
@@ -29,6 +31,7 @@ export class AutomobilComponent {
     private automobilSerivce: AutomobilService,
       public dialog:MatDialog,
       private router: Router,
+      public authService: AuthenticateService,
       private fb: FormBuilder) {
   }
 
@@ -119,7 +122,33 @@ export class AutomobilComponent {
         }
       }
     )
+  }
 
+  public openDialogAutomobil(
+    flag: number,
+    automobilId?:Guid,
+    brojSasije?:String,
+    kubikaza?:number,
+    konjskaSnaga?:number,
+    godisteAutomobila?:number,
+    tipMenjaca?:String,
+    tipAutomobila?:String,
+    markaAutomobila?:String,
+    modelAutomobila?:String,
+    cenaPoDanu?:number,
+    imageUrl?:String
+
+  ): void {
+    console.log("Flag value:", flag);
+    const dialogRef = this.dialog.open(AutomobilDialogComponent, {
+      data: { automobilId, brojSasije, kubikaza, konjskaSnaga, godisteAutomobila, tipMenjaca, tipAutomobila, markaAutomobila, modelAutomobila, cenaPoDanu, imageUrl},
+    });
+    dialogRef.componentInstance.flag = flag;
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result == 1) {
+        this.getAutomobil();
+      }
+    });
   }
 
   public applyFilter(event:any){
@@ -161,7 +190,14 @@ export class AutomobilComponent {
     this.pageSize = event.pageSize;
   }
 
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+    
+  }
 
-
-
+  isAdmin(): boolean {
+    const currentUser = this.authService.decodeToken();  
+    return currentUser.Role === 'Admin'; 
+    
+  }
 }

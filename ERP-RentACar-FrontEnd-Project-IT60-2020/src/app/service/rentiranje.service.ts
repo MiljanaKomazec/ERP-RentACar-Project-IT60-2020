@@ -20,8 +20,8 @@ import { Guid } from "guid-typescript";
     }
   
 
-  public getAllRentiranje(): Observable<any> {
-    return this.httpClient.get(`${RENTIRANJE_URL}`);
+  public getKorisnikRentiranje(id:Guid): Observable<any> {
+    return this.httpClient.get(`${RENTIRANJE_URL}/korisnik/${id}`);
   }
 
   public addRentiranje(rentiranje:Rentiranje):Observable<any>{

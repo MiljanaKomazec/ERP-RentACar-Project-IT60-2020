@@ -1,1 +1,41 @@
-<p>rentiranje-korisnik works!</p>
+<app-header></app-header>
+<body>
+    <div class="page-container">
+        <div class="outer-container">
+            <div class="container">
+                <h1>Rentiranja Korisnika: {{korisnik.imeK}} {{korisnik.przK}}</h1>
+                <table class="rent-table">
+                    <thead>
+                        <tr>
+                            <th>Rentiranje ID</th>
+                            <th>Broj Dana Izdavanja</th>
+                            <th>Datum Pocetka</th>
+                            <th>Datum Kraja</th>
+                            <th>Ukupna Cena</th>
+                            <th>Placeno</th>
+                            <th>Datum Placanja</th>
+                            <th>Pristupni Kod</th>
+                            <th>Korisnik</th>
+                            <th>Automobil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rentiranje of rentiranja">
+                            <td>{{ rentiranje.rentiranjeId }}</td>
+                            <td>{{ rentiranje.brojDanaIzdavanja }}</td>
+                            <td>{{ rentiranje.datumPocetkaIzdavanja | date }}</td>
+                            <td>{{ rentiranje.datumKrajaIzdavanja | date }}</td>
+                            <td>{{ rentiranje.ukupnaCenaRentiranja }}</td>
+                            <td>{{ rentiranje.placenoR }}</td>
+                            <td>{{ rentiranje.datumPlacanja ? (rentiranje.datumPlacanja | date) : '' }}</td>
+                            <td>{{ rentiranje.pristupniKod }}</td>
+                            <td>{{ rentiranje.korisnik.imeK + " " + rentiranje.korisnik.przK}}</td>
+                            <td>{{ rentiranje.automobil.markaAutomobila + " " + rentiranje.automobil.modelAutomobila }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
