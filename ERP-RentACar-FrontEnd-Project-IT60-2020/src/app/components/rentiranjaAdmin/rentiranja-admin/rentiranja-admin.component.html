@@ -17,6 +17,7 @@
                             <th>Pristupni Kod</th>
                             <th>Korisnik</th>
                             <th>Automobil</th>
+                            <th>Zaposleni</th>
                             <th>Akcije</th>
                         </tr>
                     </thead>
@@ -32,14 +33,11 @@
                             <td>{{ rentiranje.pristupniKod }}</td>
                             <td>{{ rentiranje.korisnik.imeK + " " + rentiranje.korisnik.przK}}</td>
                             <td>{{ rentiranje.automobil.markaAutomobila + " " + rentiranje.automobil.modelAutomobila }}</td>
+                            <td>{{ rentiranje.zaposleni.imeK + " " + rentiranje.zaposleni.przK}}</td>
                             <td>
                                 <button mat-raised-button type="button" matTooltip="Izmeni Korisnika" 
                                      class="btn btn-primary btn-link btn-sm btn-just-icon">
                                      <i class="material-icons">edit</i>
-                                </button>
-                                <button mat-raised-button type="button" matTooltip="Ukloni Korisnika" 
-                                     class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                     <i class="material-icons">close</i>
                                 </button>
                             </td>
                         </tr>

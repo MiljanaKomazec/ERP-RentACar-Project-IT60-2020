@@ -148,7 +148,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
             var rentiranja = await context.Rentiranjes.Include(k => k.Korisnik)
                                                                         .Include(z => z.Zaposleni)
                                                                         .Include(a => a.Automobil)
-                                                                        .Where(k => k.KorisnikId == KorisnikId)
+                                                                        .Where(k => k.KorisnikId == KorisnikId ||  k.ZaposleniId == KorisnikId)
                                                                         .ToListAsync();
 
             foreach (Rentiranje rentiranje in rentiranja)
@@ -171,6 +171,11 @@ namespace RentACarProject.Repository.RentiranjeRepository
                 Console.WriteLine(rentiranje);
             }
             return rentiranja;
+        }
+
+        public async Task<Rentiranje> GetRentiranjeByStripeChargeId(string stripeChargeId)
+        {
+            return await context.Rentiranjes.FirstOrDefaultAsync(r => r.StripeChargeId == stripeChargeId);
         }
     }
 }

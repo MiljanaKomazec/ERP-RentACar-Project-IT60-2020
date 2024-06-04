@@ -7,6 +7,8 @@ using RentACarProject.Models;
 using RentACarProject.Repository.AutomobilRepository;
 using RentACarProject.Repository.KorisnikRepository;
 using RentACarProject.Repository.RentiranjeRepository;
+using Stripe;
+using Stripe.Checkout;
 
 namespace RentACarProject.Controllers
 {
@@ -25,6 +27,7 @@ namespace RentACarProject.Controllers
             this.rentRepository = rentRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            StripeConfiguration.ApiKey = "sk_test_51PG5DH01Y3CG6EWFDJrXdXAEzbHgSgrdKYDisNZ8Kb9mRcMc6Y72jAQfmWIr3VrXTWhv8C4TrxsizycUMiJFbq0Q0072nNXpyt";
         }
 
         [Authorize(Roles = "Admin")]
@@ -72,8 +75,25 @@ namespace RentACarProject.Controllers
 
             try
             {
+                
+                var options = new ChargeCreateOptions
+                {
+                    Amount = (long)(rentiranje.UkupnaCenaRentiranja) *100, 
+                    Currency = "eur",
+                    Description = "Rentiranje automobila",
+                    Source = rentiranje.StripeToken,
+                };
+
+                var service = new ChargeService();
+                Charge charge = service.Create(options);
+
+                if (charge.Status != "succeeded")
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Payment Error");
+                }
 
                 Rentiranje rentiranjeModel = mapper.Map<Rentiranje>(rentiranje);
+                rentiranjeModel.StripeChargeId = charge.Id;
                 Rentiranje confirmation = await rentRepository.CreateRentiranje(rentiranjeModel);
                 await rentRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetRentiranje", "Rentiranje", new { RentiranjeId = confirmation.RentiranjeId });
@@ -229,5 +249,64 @@ namespace RentACarProject.Controllers
 
             return Ok(mapper.Map<List<RentiranjeDostupnostDTO>>(rentiranje));
         }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpPost("webhook")]
+        public async Task<IActionResult> Index()
+        {
+            var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
+            var signatureHeader = Request.Headers["Stripe-Signature"];
+            var webhookSecret = "whsec_79kpM9PhE24odBKo0GxH7yR3gEXXic08"; 
+
+            try
+            {
+                var stripeEvent = EventUtility.ConstructEvent(
+                    json,
+                    signatureHeader,
+                    webhookSecret
+                );
+
+                Console.WriteLine($"Received Stripe event: {stripeEvent.Type}");
+
+                if (stripeEvent.Type == Events.ChargeSucceeded)
+                {
+                    var charge = stripeEvent.Data.Object as Charge;
+                    Console.WriteLine($"Charge succeeded for charge ID: {charge.Id}");
+
+                    var rentiranje = await rentRepository.GetRentiranjeByStripeChargeId(charge.Id);
+                    if (rentiranje != null)
+                    {
+                        rentiranje.PlacenoR = "Da";
+                        rentiranje.DatumPlacanja = DateTime.UtcNow;
+                        var updatedRentiranje = await rentRepository.UpdateRentiranje(rentiranje);
+
+                        Console.WriteLine($"Updated rentiranje status to 'Paid' for charge ID: {charge.Id}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"No rentiranje found for charge ID: {charge.Id}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Unhandled event type: {stripeEvent.Type}");
+                }
+
+                return Ok();
+            }
+            catch (StripeException e)
+            {
+                Console.WriteLine($"Stripe exception: {e.Message}");
+                return BadRequest(new { error = e.Message });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"General exception: {e.Message}");
+                return BadRequest(new { error = e.Message });
+            }
+        }
+
+
+
     }
 }

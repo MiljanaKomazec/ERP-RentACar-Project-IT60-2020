@@ -14,5 +14,6 @@ namespace RentACarProject.DTO
         public Guid KorisnikId { get; set; }
         public Guid ZaposleniId { get; set; }
         public Guid AutomobilId { get; set; }
+        public string? StripeToken { get; set; }
     }
 }

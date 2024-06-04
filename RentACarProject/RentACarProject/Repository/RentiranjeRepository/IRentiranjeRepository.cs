@@ -17,5 +17,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
         Task<List<Rentiranje>> GetRentiranjeByKorisnikId(Guid KorisnikId);
         Task<List<Rentiranje>> GetRentiranjeByAutomobilId(Guid AutomobilId);
         Task<bool> SaveChanges();
+
+        Task<Rentiranje> GetRentiranjeByStripeChargeId(string stripeChargeId);
     }
 }

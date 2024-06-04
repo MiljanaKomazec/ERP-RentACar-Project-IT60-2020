@@ -7,6 +7,8 @@ import { AuthenticateService } from 'src/app/service/authenticate.service';
 import { AutomobilService } from 'src/app/service/automobil.service';
 import { LogInDialogComponent } from '../dialog/logIn/log-in-dialog/log-in-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { StripePaymentDialogComponent } from '../dialog/stripePaymentDialog/stripe-payment-dialog/stripe-payment-dialog.component';
+import { RentiranjeDTO } from 'src/app/models/rentiranjeDTO';
 
 @Component({
   selector: 'app-rentiranje',
@@ -15,9 +17,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RentiranjeComponent {
 
-  automobilId!: Guid;
+  automobilId!: string;
   automobil!: Automobil;
-  rentiranje!: Rentiranje;
+  rentiranje!: RentiranjeDTO;
   numberOfDays: number = 0;
   
 
@@ -33,7 +35,7 @@ export class RentiranjeComponent {
     this.route.paramMap.subscribe(params => {
       const automobilIdString = params.get('automobilId'); // Dobijamo automobilId kao string
       if (automobilIdString) {
-        this.automobilId = Guid.parse(automobilIdString); // Pretvaramo string u Guid
+        this.automobilId = (automobilIdString); // Pretvaramo string u Guid
         console.log("ID automobila:", this.automobilId);
         // Ovdje možete izvršiti dodatne radnje koje zahtijevaju automobilId
       } else {
@@ -42,7 +44,7 @@ export class RentiranjeComponent {
     });
 
     this.getAutomobil();
-    this.rentiranje = new Rentiranje();
+    this.rentiranje = new RentiranjeDTO();
 
     
   }
@@ -51,6 +53,7 @@ export class RentiranjeComponent {
     this.automobilSerivce.getAutomobilById(this.automobilId).subscribe(res =>{
       console.log('Fetched car:', res);
       this.automobil = res;
+      this.rentiranje.automobilId=this.automobilId;
       }
     ),
     (error:Error) => {
@@ -68,6 +71,9 @@ export class RentiranjeComponent {
       this.rentiranje.brojDanaIzdavanja = numberOfDays;
       this.rentiranje.ukupnaCenaRentiranja = this.calculateTotalPrice();
       this.rentiranje.pristupniKod = this.generateRandomCode();
+      const currentUser = this.authService.decodeToken();
+      this.rentiranje.korisnikId = currentUser.Id.toString();
+      this.rentiranje.zaposleniId = "B3D8CE7B-FE80-4A79-A60E-D74160CAD7E4";
     }
   }
   calculateTotalPrice(): number {
@@ -85,12 +91,27 @@ export class RentiranjeComponent {
     this.router.navigate(['/automobili']); // Zamijenite '/' sa stvarnim putem do početne stranice ako je potrebno
   }
 
+  openPaymentDialog(): void {
+    this.calculateTotalPrice();
+    const dialogRef = this.dialog.open(StripePaymentDialogComponent, {
+      width: '400px',
+      data: { rentiranje: this.rentiranje }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Payment successful');
+      } else {
+        console.log('Payment failed or cancelled');
+      }
+    });
+  }
 
   rentiraj() {
     if (!this.authService.isLoggedIn) {
         this.openLoginDialog();
     } else {
-        
+      this.openPaymentDialog();
     }
   }
 

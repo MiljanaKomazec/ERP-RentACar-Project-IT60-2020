@@ -32,6 +32,7 @@ import { KorisnikUadDialogComponent } from './components/dialog/korisnikUpdateAn
 import { KorisnikProfilComponent } from './components/korisinkProfil/korisnik-profil/korisnik-profil.component';
 import { RentiranjeKorisnikComponent } from './components/rentiranjeKorisnik/rentiranje-korisnik/rentiranje-korisnik.component';
 import { AutomobilDialogComponent } from './components/automobil/dialogs/automobil-dialog/automobil-dialog.component';
+import { StripePaymentDialogComponent } from './components/dialog/stripePaymentDialog/stripe-payment-dialog/stripe-payment-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
     KorisnikProfilComponent,
     RentiranjeKorisnikComponent,
     AutomobilDialogComponent,
+    StripePaymentDialogComponent,
 
   ],
   imports: [

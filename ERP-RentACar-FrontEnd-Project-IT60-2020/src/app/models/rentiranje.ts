@@ -15,4 +15,7 @@ export class Rentiranje {
     automobil!:Automobil;
     korisnikId!:Guid;
     korisnik!:Korisnik;
+    zaposleniId!:Guid;
+    zaposleni!:Korisnik;
+    stripeToken!:String;
 }

@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { RENTIRANJE_URL } from "../constants";
 import { Rentiranje } from "../models/rentiranje";
 import { Guid } from "guid-typescript";
+import { RentiranjeDTO } from "../models/rentiranjeDTO";
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +25,7 @@ import { Guid } from "guid-typescript";
     return this.httpClient.get(`${RENTIRANJE_URL}/korisnik/${id}`);
   }
 
-  public addRentiranje(rentiranje:Rentiranje):Observable<any>{
+  public addRentiranje(rentiranje:RentiranjeDTO):Observable<any>{
     return this.httpClient.post(`${RENTIRANJE_URL}` ,rentiranje);
   }
 

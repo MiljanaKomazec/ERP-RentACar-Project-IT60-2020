@@ -18,10 +18,11 @@
           </mat-form-field>
           <mat-form-field class="form-field">
             <input matInput [matDatepicker]="datumKrajaIzdavanja" placeholder="Datum Kraja" name="Datum Kraja" 
-                [(ngModel)]="rentiranje.datumKrajaIzdavanja" (dateChange)="calculateNumberOfDays()" required/>
+                [(ngModel)]="rentiranje.datumKrajaIzdavanja" (dateChange)="calculateNumberOfDays()" required
+                [min]="rentiranje.datumPocetkaIzdavanja"/>
             <mat-datepicker-toggle matSuffix [for]="datumKrajaIzdavanja"> </mat-datepicker-toggle>
             <mat-datepicker #datumKrajaIzdavanja></mat-datepicker>
-          </mat-form-field>
+        </mat-form-field>
           </div>
           <p>Broj Dana Izdavanje:</p>
           <mat-form-field class="form-field">

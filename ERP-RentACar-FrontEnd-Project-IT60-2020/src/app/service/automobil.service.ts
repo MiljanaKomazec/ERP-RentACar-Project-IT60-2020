@@ -15,7 +15,7 @@ import { Guid } from "guid-typescript";
           return this.httpClient.get(`${AUTOMOBIL_URL}`);
         }
 
-      public getAutomobilById(id:Guid): Observable<any> {
+      public getAutomobilById(id:string): Observable<any> {
           return this.httpClient.get(`${AUTOMOBIL_URL}/${id}`);
       }
 

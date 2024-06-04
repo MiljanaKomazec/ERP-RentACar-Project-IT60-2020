@@ -15,7 +15,6 @@
                             <th>Placeno</th>
                             <th>Datum Placanja</th>
                             <th>Pristupni Kod</th>
-                            <th>Korisnik</th>
                             <th>Automobil</th>
                         </tr>
                     </thead>
@@ -29,7 +28,6 @@
                             <td>{{ rentiranje.placenoR }}</td>
                             <td>{{ rentiranje.datumPlacanja ? (rentiranje.datumPlacanja | date) : '' }}</td>
                             <td>{{ rentiranje.pristupniKod }}</td>
-                            <td>{{ rentiranje.korisnik.imeK + " " + rentiranje.korisnik.przK}}</td>
                             <td>{{ rentiranje.automobil.markaAutomobila + " " + rentiranje.automobil.modelAutomobila }}</td>
                         </tr>
                     </tbody>

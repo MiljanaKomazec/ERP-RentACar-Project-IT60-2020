@@ -29,6 +29,8 @@ namespace RentACarProject.Models
         public DateTime? DatumPlacanja { get; set; }
         [Column("pristupniKod", TypeName = "numeric(13, 0)")]
         public decimal? PristupniKod { get; set; }
+        [Column("stripeChargedId")]
+        public string StripeChargeId { get; set; }
         [Column("korisnikId")]
         public Guid KorisnikId { get; set; }
         [Column("zaposleniId")]
