@@ -5,6 +5,7 @@ import { RENTIRANJE_URL } from "../constants";
 import { Rentiranje } from "../models/rentiranje";
 import { Guid } from "guid-typescript";
 import { RentiranjeDTO } from "../models/rentiranjeDTO";
+import { UpdateZaposleniDTO } from "../models/updateZaposleniDTO";
 
 @Injectable({
     providedIn: 'root'
@@ -39,5 +40,9 @@ import { RentiranjeDTO } from "../models/rentiranjeDTO";
 
   public dostupnostRentiranje(id:Guid):Observable<any> {
     return this.httpClient.get(`${RENTIRANJE_URL}/dostupnost/${id}`);
+  }
+
+  public updateRentiranjeZaposleni(rentiranje:UpdateZaposleniDTO):Observable<any>{
+    return this.httpClient.put(`${RENTIRANJE_URL}/zaposleni` ,rentiranje);
   }
 }

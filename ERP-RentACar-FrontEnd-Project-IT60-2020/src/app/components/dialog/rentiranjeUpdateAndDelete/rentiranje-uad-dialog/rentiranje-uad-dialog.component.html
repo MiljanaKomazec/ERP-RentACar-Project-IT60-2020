@@ -1,1 +1,22 @@
-<p>rentiranje-uad-dialog works!</p>
+<div class="container" *ngIf="flag === 1">
+    <h3 mat-dialog-title *ngIf="flag == 1">Ažuriranje Rentiranje: </h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Rentiranje" name="Rentiranje" [disabled]="flag==1" [(ngModel)]="data.rentiranjeId" required />
+        </mat-form-field>
+       </div>
+
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Zaposleni" name="Zaposleni" [(ngModel)]="data.zaposleniId" required />
+        </mat-form-field>
+       </div>
+    </form>
+
+    <div class="mat-dialog-actions form-field">
+        <button mat-raised-button class="button" *ngIf="flag == 1" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="update()">Ažuriraj</button>
+        <button mat-raised-button class="button" (click)="cancel()">Poništi</button>
+    </div>
+</div>
+

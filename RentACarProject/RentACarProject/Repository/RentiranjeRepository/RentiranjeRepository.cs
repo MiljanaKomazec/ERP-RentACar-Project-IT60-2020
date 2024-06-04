@@ -177,5 +177,39 @@ namespace RentACarProject.Repository.RentiranjeRepository
         {
             return await context.Rentiranjes.FirstOrDefaultAsync(r => r.StripeChargeId == stripeChargeId);
         }
+
+        public async Task<Rentiranje> UpdateRentiranjeZaposleni(UpdateZaposleniDTO rentiranjeZaposleni)
+        {
+            var rentiranja = await context.Rentiranjes.Include(k => k.Korisnik)
+                                                                         .Include(z => z.Zaposleni)
+                                                                         .Include(a => a.Automobil)
+                                                                         .ToListAsync();
+            var existingRentiranje = rentiranja.FirstOrDefault(e => e.RentiranjeId == rentiranjeZaposleni.RentiranjeId);
+            if (existingRentiranje != null)
+            {
+
+                existingRentiranje.ZaposleniId = rentiranjeZaposleni.ZaposleniId;
+
+                _ = context.Entry(existingRentiranje).State;
+
+                int affectedRows = await context.SaveChangesAsync(); // Check return value
+
+                if (affectedRows > 0)
+                {
+                    return mapper.Map<Rentiranje>(existingRentiranje);
+                }
+                else
+                {
+                    // Log or throw an exception indicating that no changes were saved
+                    throw new Exception("No changes were saved to the database.");
+                }
+
+            }
+            else
+            {
+                // Log or throw an exception indicating that no changes were saved
+                throw new Exception("No cexisting rentiranje.");
+            }
+        }
     }
 }

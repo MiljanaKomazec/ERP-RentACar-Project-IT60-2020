@@ -19,5 +19,7 @@ namespace RentACarProject.Repository.RentiranjeRepository
         Task<bool> SaveChanges();
 
         Task<Rentiranje> GetRentiranjeByStripeChargeId(string stripeChargeId);
+
+        Task<Rentiranje> UpdateRentiranjeZaposleni(UpdateZaposleniDTO rentiranjeZaposleni);
     }
 }

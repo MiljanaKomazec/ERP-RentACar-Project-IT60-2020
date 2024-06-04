@@ -306,6 +306,30 @@ namespace RentACarProject.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpPut("zaposleni")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [EnableCors("AllowOrigin")]
+        public async Task<ActionResult<RentiranjeDTO>> UpdateRentiranjeZaposleni([FromBody] UpdateZaposleniDTO rentiranje)
+        {
+            try
+            {
+                var updatedRentiranje = await rentRepository.UpdateRentiranjeZaposleni(rentiranje);
+
+
+                return Ok(mapper.Map<RentiranjeDTO>(updatedRentiranje));
+
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
 
 
     }
